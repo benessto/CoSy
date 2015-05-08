@@ -42,7 +42,7 @@ public class Periphery {
 							}else{
 								unten++;
 							}
-							System.out.println("Periphery.search() found in cluster at "+i+","+j);
+//							System.out.println("Periphery.search() found in cluster at "+i+","+j);
 							found++;
 						}
 					}
