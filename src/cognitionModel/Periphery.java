@@ -70,8 +70,8 @@ public class Periphery {
 		for(int i=0;i<cluster[0].length;i++){
 			for(int j=0;j<cluster.length;j++){
 				if(ignore==2){
-					if(!(j==1&&i==1) && cluster[j][i]!=null && i!=0){
-						String[] currentObjekt = cluster[j][i].split(" ");
+					if(!(j==1&&i==1) && cluster[i][j]!=null && i!=0){
+						String[] currentObjekt = cluster[i][j].split(" ");
 					
 						if(currentObjekt[0].equals(searchedColor)){
 							if(i==1){
@@ -83,8 +83,8 @@ public class Periphery {
 						}
 					}
 				}else if(ignore==3){
-					if(!(j==1&&i==1) && cluster[j][i]!=null && i!=1){
-						String[] currentObjekt = cluster[j][i].split(" ");
+					if(!(j==1&&i==1) && cluster[i][j]!=null && i!=1){
+						String[] currentObjekt = cluster[i][j].split(" ");
 					
 						if(currentObjekt[0].equals(searchedColor)){
 							if(i==0){
@@ -98,8 +98,8 @@ public class Periphery {
 						}
 					}
 				} else if(ignore==4){
-					if(!(j==1&&i==1) && cluster[j][i]!=null && i!=2){
-						String[] currentObjekt = cluster[j][i].split(" ");
+					if(!(j==1&&i==1) && cluster[i][j]!=null && i!=2){
+						String[] currentObjekt = cluster[i][j].split(" ");
 					
 						if(currentObjekt[0].equals(searchedColor)){
 							if(i==0){
@@ -113,8 +113,8 @@ public class Periphery {
 						}
 					}
 				}else if(ignore==5){
-					if(!(j==1&&i==1) && cluster[j][i]!=null && i!=0 && i!=1){
-						String[] currentObjekt = cluster[j][i].split(" ");
+					if(!(j==1&&i==1) && cluster[i][j]!=null && i!=0 && i!=1){
+						String[] currentObjekt = cluster[i][j].split(" ");
 					
 						if(currentObjekt[0].equals(searchedColor)){
 							if(i==0){
@@ -128,8 +128,8 @@ public class Periphery {
 						}
 					}
 				}else if(ignore==7){
-					if(!(j==1&&i==1) && cluster[j][i]!=null && i!=1 && i!=2){
-						String[] currentObjekt = cluster[j][i].split(" ");
+					if(!(j==1&&i==1) && cluster[i][j]!=null && i!=1 && i!=2){
+						String[] currentObjekt = cluster[i][j].split(" ");
 					
 						if(currentObjekt[0].equals(searchedColor)){
 							if(i==0){
@@ -143,8 +143,8 @@ public class Periphery {
 						}
 					}
 				}else if(ignore==6){
-					if(!(j==1&&i==1) && cluster[j][i]!=null && i!=0 && i!=2){
-						String[] currentObjekt = cluster[j][i].split(" ");
+					if(!(j==1&&i==1) && cluster[i][j]!=null && i!=0 && i!=2){
+						String[] currentObjekt = cluster[i][j].split(" ");
 					
 						if(currentObjekt[0].equals(searchedColor)){
 							if(i==0){

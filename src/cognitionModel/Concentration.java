@@ -20,14 +20,6 @@ public class Concentration {
 		elements = new HashMap<Integer, Element>();
 		periphery = new Periphery();
 		memory = new Memory();
-	}
-	public void memorize(){
-		if(!memory.hasMemory(task)){
-			memory.memorize(task, elements.size());
-		}
-	}
-	
-	public void start() {
 		RandomArrayGen arrayGen = new RandomArrayGen();
 		setVisual(arrayGen.RandomIntegerArray());	
 		clock.setMaxTime(500); //Max time in ticks
@@ -35,8 +27,11 @@ public class Concentration {
 		setSearched(getTaskInput());
 		maxX = visual.length;
 		maxY = visual[0].length;
-		
-		startTask();
+	}
+	public void memorize(){
+		if(!memory.hasMemory(task)){
+			memory.memorize(task, elements.size());
+		}
 	}
 	
 	public void startTask() {
@@ -101,7 +96,7 @@ public class Concentration {
 					int test1 = i-1+h;
 					int test2 = j-1+k;
 					clusterText.add("Cluster Feld "+ h + k +" : " + cluster[h][k] + ",ArrayFeld " + test1 +  " " + test2);
-					if (cluster[h][k].equals(task)){
+					if (visual[i-1+h][j-1+k].equals(task)){
 						found = true;
 					}
 				}
