@@ -5,10 +5,10 @@ import java.util.HashMap;
 public class Concentration {
 	
 	private String[][] visual;
-	private int numberOfSearched=0;
-	private Clock clock=new Clock();
+	private int numberOfSearched = 0;
+	private Clock clock = new Clock();
 	private String searched;
-	private Periphery periphery=new Periphery();
+	private Periphery periphery = new Periphery();
 	private int maxX;
 	private int maxY;
 	private HashMap<Integer, Element> elements = new HashMap<Integer, Element>();		

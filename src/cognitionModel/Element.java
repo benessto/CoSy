@@ -6,6 +6,7 @@ public class Element {
 	private int koordinates;
 	private String color;
 	private String form;
+	private int connections = 0;
 	
 	public Element(int x, int y, String color, String form){
 		setX(x);
@@ -53,6 +54,14 @@ public class Element {
 
 	public int getKoordinates() {
 		return koordinates;
+	}
+
+	public int getConnections() {
+		return connections;
+	}
+
+	public void addConnections() {
+		connections++;
 	}
 
 }
