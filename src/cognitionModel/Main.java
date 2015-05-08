@@ -10,9 +10,10 @@ public class Main {
 		 
 		System.out.print("Eingabe: ");
 		String eingabe = scanner.nextLine();
- 
+		scanner.close();
 		System.out.println("Ausgabe: " + eingabe);
-		//con.start();
+		
+		con.start();
 	}
 
 }
