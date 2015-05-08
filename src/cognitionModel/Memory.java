@@ -19,11 +19,7 @@ public class Memory {
 	 * @false There is no memory of this element
 	 */
 	public boolean hasMemory(String element) {
-		if(memoryMap.containsKey(element)){
-			return true;
-		} else {
-			return false;
-		}
+			return memoryMap.containsKey(element);
 	}
 	
 	/**
@@ -31,12 +27,9 @@ public class Memory {
 	 * @param element The element to be memorized
 	 * @param value The amount of found elements
 	 */
-	public boolean memorize(String element, int value) {
-		if(!memoryMap.containsKey(element)){
+	public void memorize(String element, int value) {
+		if(!hasMemory(element)){
 			memoryMap.put(element, value);
-			return true;
-		} else {
-			return false;
 		}
 	}
 	
