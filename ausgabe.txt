@@ -1,0 +1,578 @@
+Array Feld : 0 0 Red Circle
+Array Feld : 0 1 leer
+Array Feld : 0 2 Green Polygon
+Array Feld : 0 3 leer
+Array Feld : 0 4 Green Square
+Array Feld : 0 5 leer
+Array Feld : 0 6 leer
+Array Feld : 0 7 leer
+Array Feld : 0 8 Yellow Circle
+Array Feld : 0 9 Yellow Circle
+Array Feld : 0 10 leer
+Array Feld : 0 11 leer
+Array Feld : 1 0 Red Square
+Array Feld : 1 1 leer
+Array Feld : 1 2 leer
+Array Feld : 1 3 leer
+Array Feld : 1 4 Red Triangle
+Array Feld : 1 5 Blue Square
+Array Feld : 1 6 Blue Polygon
+Array Feld : 1 7 leer
+Array Feld : 1 8 Yellow Polygon
+Array Feld : 1 9 leer
+Array Feld : 1 10 leer
+Array Feld : 1 11 Yellow Square
+Array Feld : 2 0 leer
+Array Feld : 2 1 Green Circle
+Array Feld : 2 2 leer
+Array Feld : 2 3 Blue Polygon
+Array Feld : 2 4 Yellow Square
+Array Feld : 2 5 leer
+Array Feld : 2 6 leer
+Array Feld : 2 7 Blue Circle
+Array Feld : 2 8 Green Circle
+Array Feld : 2 9 Green Square
+Array Feld : 2 10 leer
+Array Feld : 2 11 leer
+Array Feld : 3 0 leer
+Array Feld : 3 1 leer
+Array Feld : 3 2 Blue Polygon
+Array Feld : 3 3 leer
+Array Feld : 3 4 leer
+Array Feld : 3 5 Green Triangle
+Array Feld : 3 6 Green Square
+Array Feld : 3 7 leer
+Array Feld : 3 8 leer
+Array Feld : 3 9 Red Triangle
+Array Feld : 3 10 leer
+Array Feld : 3 11 leer
+Array Feld : 4 0 leer
+Array Feld : 4 1 Red Triangle
+Array Feld : 4 2 Yellow Square
+Array Feld : 4 3 Green Square
+Array Feld : 4 4 leer
+Array Feld : 4 5 Red Triangle
+Array Feld : 4 6 leer
+Array Feld : 4 7 leer
+Array Feld : 4 8 Green Circle
+Array Feld : 4 9 Green Circle
+Array Feld : 4 10 Green Circle
+Array Feld : 4 11 leer
+Array Feld : 5 0 leer
+Array Feld : 5 1 leer
+Array Feld : 5 2 Red Triangle
+Array Feld : 5 3 leer
+Array Feld : 5 4 Yellow Circle
+Array Feld : 5 5 leer
+Array Feld : 5 6 leer
+Array Feld : 5 7 Yellow Square
+Array Feld : 5 8 Blue Triangle
+Array Feld : 5 9 Green Triangle
+Array Feld : 5 10 leer
+Array Feld : 5 11 Blue Circle
+Array Feld : 6 0 Green Polygon
+Array Feld : 6 1 Red Circle
+Array Feld : 6 2 leer
+Array Feld : 6 3 leer
+Array Feld : 6 4 Red Circle
+Array Feld : 6 5 leer
+Array Feld : 6 6 leer
+Array Feld : 6 7 Yellow Polygon
+Array Feld : 6 8 Blue Polygon
+Array Feld : 6 9 leer
+Array Feld : 6 10 leer
+Array Feld : 6 11 Blue Square
+Array Feld : 7 0 Yellow Square
+Array Feld : 7 1 leer
+Array Feld : 7 2 leer
+Array Feld : 7 3 leer
+Array Feld : 7 4 leer
+Array Feld : 7 5 leer
+Array Feld : 7 6 leer
+Array Feld : 7 7 leer
+Array Feld : 7 8 leer
+Array Feld : 7 9 Yellow Square
+Array Feld : 7 10 leer
+Array Feld : 7 11 leer
+Array Feld : 8 0 Yellow Circle
+Array Feld : 8 1 leer
+Array Feld : 8 2 leer
+Array Feld : 8 3 Red Circle
+Array Feld : 8 4 leer
+Array Feld : 8 5 leer
+Array Feld : 8 6 Blue Polygon
+Array Feld : 8 7 Red Square
+Array Feld : 8 8 leer
+Array Feld : 8 9 leer
+Array Feld : 8 10 Blue Polygon
+Array Feld : 8 11 leer
+Array Feld : 9 0 leer
+Array Feld : 9 1 Red Polygon
+Array Feld : 9 2 leer
+Array Feld : 9 3 leer
+Array Feld : 9 4 leer
+Array Feld : 9 5 leer
+Array Feld : 9 6 leer
+Array Feld : 9 7 Red Triangle
+Array Feld : 9 8 leer
+Array Feld : 9 9 Red Square
+Array Feld : 9 10 leer
+Array Feld : 9 11 leer
+Array Feld : 10 0 leer
+Array Feld : 10 1 leer
+Array Feld : 10 2 Green Circle
+Array Feld : 10 3 Yellow Circle
+Array Feld : 10 4 leer
+Array Feld : 10 5 Yellow Circle
+Array Feld : 10 6 leer
+Array Feld : 10 7 Green Square
+Array Feld : 10 8 Green Circle
+Array Feld : 10 9 leer
+Array Feld : 10 10 leer
+Array Feld : 10 11 leer
+Array Feld : 11 0 Green Square
+Array Feld : 11 1 leer
+Array Feld : 11 2 leer
+Array Feld : 11 3 leer
+Array Feld : 11 4 leer
+Array Feld : 11 5 leer
+Array Feld : 11 6 leer
+Array Feld : 11 7 leer
+Array Feld : 11 8 leer
+Array Feld : 11 9 leer
+Array Feld : 11 10 leer
+Array Feld : 11 11 leer
+Array Feld : 12 0 leer
+Array Feld : 12 1 Yellow Circle
+Array Feld : 12 2 Red Square
+Array Feld : 12 3 leer
+Array Feld : 12 4 leer
+Array Feld : 12 5 leer
+Array Feld : 12 6 Red Circle
+Array Feld : 12 7 Blue Polygon
+Array Feld : 12 8 Red Square
+Array Feld : 12 9 Green Circle
+Array Feld : 12 10 Blue Triangle
+Array Feld : 12 11 leer
+Looking for : Blue Triangle, Found:  leer at tick 0
+
+Cluster Feld 00 : Red Circle,ArrayFeld 0 0
+
+Cluster Feld 01 : leer,ArrayFeld 0 1
+
+Cluster Feld 02 : Green Polygon,ArrayFeld 0 2
+
+Cluster Feld 10 : Red Square,ArrayFeld 1 0
+
+Cluster Feld 11 : leer,ArrayFeld 1 1
+
+Cluster Feld 12 : leer,ArrayFeld 1 2
+
+Cluster Feld 20 : leer,ArrayFeld 2 0
+
+Cluster Feld 21 : Green Circle,ArrayFeld 2 1
+
+Cluster Feld 22 : leer,ArrayFeld 2 2
+
+search if(i+3<=maxX)
+
+Looking for : Blue Triangle, Found:  Red Triangle at tick 1
+
+Cluster Feld 00 : leer,ArrayFeld 3 0
+
+Cluster Feld 01 : leer,ArrayFeld 3 1
+
+Cluster Feld 02 : Blue Polygon,ArrayFeld 3 2
+
+Cluster Feld 10 : leer,ArrayFeld 4 0
+
+Cluster Feld 11 : Red Triangle,ArrayFeld 4 1
+
+Cluster Feld 12 : Yellow Square,ArrayFeld 4 2
+
+Cluster Feld 20 : leer,ArrayFeld 5 0
+
+Cluster Feld 21 : leer,ArrayFeld 5 1
+
+Cluster Feld 22 : Red Triangle,ArrayFeld 5 2
+
+Start searchAround i=4, j=1, hint =-1
+
+Ignore: 2 0
+
+Start searchAround i=4, j=1, hint =1
+
+searchAround if(i+3<=maxX) 4 1
+
+Looking for : Blue Triangle, Found:  leer at tick 4
+
+Cluster Feld 00 : Green Polygon,ArrayFeld 6 0
+
+Cluster Feld 01 : Red Circle,ArrayFeld 6 1
+
+Cluster Feld 02 : leer,ArrayFeld 6 2
+
+Cluster Feld 10 : Yellow Square,ArrayFeld 7 0
+
+Cluster Feld 11 : leer,ArrayFeld 7 1
+
+Cluster Feld 12 : leer,ArrayFeld 7 2
+
+Cluster Feld 20 : Yellow Circle,ArrayFeld 8 0
+
+Cluster Feld 21 : leer,ArrayFeld 8 1
+
+Cluster Feld 22 : leer,ArrayFeld 8 2
+
+search if(i+3<=maxX)
+
+Looking for : Blue Triangle, Found:  leer at tick 5
+
+Cluster Feld 00 : leer,ArrayFeld 9 0
+
+Cluster Feld 01 : Red Polygon,ArrayFeld 9 1
+
+Cluster Feld 02 : leer,ArrayFeld 9 2
+
+Cluster Feld 10 : leer,ArrayFeld 10 0
+
+Cluster Feld 11 : leer,ArrayFeld 10 1
+
+Cluster Feld 12 : Green Circle,ArrayFeld 10 2
+
+Cluster Feld 20 : Green Square,ArrayFeld 11 0
+
+Cluster Feld 21 : leer,ArrayFeld 11 1
+
+Cluster Feld 22 : leer,ArrayFeld 11 2
+
+37
+
+search if(j+3<=maxY)
+
+Looking for : Blue Triangle, Found:  Red Triangle at tick 7
+
+Cluster Feld 00 : leer,ArrayFeld 0 3
+
+Cluster Feld 01 : Green Square,ArrayFeld 0 4
+
+Cluster Feld 02 : leer,ArrayFeld 0 5
+
+Cluster Feld 10 : leer,ArrayFeld 1 3
+
+Cluster Feld 11 : Red Triangle,ArrayFeld 1 4
+
+Cluster Feld 12 : Blue Square,ArrayFeld 1 5
+
+Cluster Feld 20 : Blue Polygon,ArrayFeld 2 3
+
+Cluster Feld 21 : Yellow Square,ArrayFeld 2 4
+
+Cluster Feld 22 : leer,ArrayFeld 2 5
+
+Start searchAround i=1, j=4, hint =1
+
+Ignore: 4 0
+
+Start searchAround i=1, j=4, hint =-1
+
+searchAround if(i+3<=maxX) 1 4
+
+Looking for : Blue Triangle, Found:  leer at tick 10
+
+Cluster Feld 00 : leer,ArrayFeld 3 3
+
+Cluster Feld 01 : leer,ArrayFeld 3 4
+
+Cluster Feld 02 : Green Triangle,ArrayFeld 3 5
+
+Cluster Feld 10 : Green Square,ArrayFeld 4 3
+
+Cluster Feld 11 : leer,ArrayFeld 4 4
+
+Cluster Feld 12 : Red Triangle,ArrayFeld 4 5
+
+Cluster Feld 20 : leer,ArrayFeld 5 3
+
+Cluster Feld 21 : Yellow Circle,ArrayFeld 5 4
+
+Cluster Feld 22 : leer,ArrayFeld 5 5
+
+search if(i+3<=maxX)
+
+Looking for : Blue Triangle, Found:  leer at tick 11
+
+Cluster Feld 00 : leer,ArrayFeld 6 3
+
+Cluster Feld 01 : Red Circle,ArrayFeld 6 4
+
+Cluster Feld 02 : leer,ArrayFeld 6 5
+
+Cluster Feld 10 : leer,ArrayFeld 7 3
+
+Cluster Feld 11 : leer,ArrayFeld 7 4
+
+Cluster Feld 12 : leer,ArrayFeld 7 5
+
+Cluster Feld 20 : Red Circle,ArrayFeld 8 3
+
+Cluster Feld 21 : leer,ArrayFeld 8 4
+
+Cluster Feld 22 : leer,ArrayFeld 8 5
+
+search if(i+3<=maxX)
+
+Looking for : Blue Triangle, Found:  leer at tick 12
+
+Cluster Feld 00 : leer,ArrayFeld 9 3
+
+Cluster Feld 01 : leer,ArrayFeld 9 4
+
+Cluster Feld 02 : leer,ArrayFeld 9 5
+
+Cluster Feld 10 : Yellow Circle,ArrayFeld 10 3
+
+Cluster Feld 11 : leer,ArrayFeld 10 4
+
+Cluster Feld 12 : Yellow Circle,ArrayFeld 10 5
+
+Cluster Feld 20 : leer,ArrayFeld 11 3
+
+Cluster Feld 21 : leer,ArrayFeld 11 4
+
+Cluster Feld 22 : leer,ArrayFeld 11 5
+
+40
+
+search if(j+3<=maxY)
+
+Looking for : Blue Triangle, Found:  leer at tick 14
+
+Cluster Feld 00 : leer,ArrayFeld 0 6
+
+Cluster Feld 01 : leer,ArrayFeld 0 7
+
+Cluster Feld 02 : Yellow Circle,ArrayFeld 0 8
+
+Cluster Feld 10 : Blue Polygon,ArrayFeld 1 6
+
+Cluster Feld 11 : leer,ArrayFeld 1 7
+
+Cluster Feld 12 : Yellow Polygon,ArrayFeld 1 8
+
+Cluster Feld 20 : leer,ArrayFeld 2 6
+
+Cluster Feld 21 : Blue Circle,ArrayFeld 2 7
+
+Cluster Feld 22 : Green Circle,ArrayFeld 2 8
+
+Start searchAround i=1, j=7, hint =1
+
+Ignore: 4 0
+
+Start searchAround i=1, j=7, hint =-1
+
+Ignore: 6 4
+
+Start searchAround i=1, j=7, hint =0
+
+searchAround if(i+3<=maxX) 1 7
+
+Looking for : Blue Triangle, Found:  leer at tick 18
+
+Cluster Feld 00 : Green Square,ArrayFeld 3 6
+
+Cluster Feld 01 : leer,ArrayFeld 3 7
+
+Cluster Feld 02 : leer,ArrayFeld 3 8
+
+Cluster Feld 10 : leer,ArrayFeld 4 6
+
+Cluster Feld 11 : leer,ArrayFeld 4 7
+
+Cluster Feld 12 : Green Circle,ArrayFeld 4 8
+
+Cluster Feld 20 : leer,ArrayFeld 5 6
+
+Cluster Feld 21 : Yellow Square,ArrayFeld 5 7
+
+Cluster Feld 22 : Blue Triangle,ArrayFeld 5 8
+
+Start searchAround i=4, j=7, hint =1
+
+searchArround3: Found an element
+
+Ignore: 4 0
+
+Start searchAround i=4, j=7, hint =1
+
+searchArround3: Found an element
+
+searchAround if(i+3<=maxX) 4 7
+
+Looking for : Blue Triangle, Found:  leer at tick 21
+
+Cluster Feld 00 : leer,ArrayFeld 6 6
+
+Cluster Feld 01 : Yellow Polygon,ArrayFeld 6 7
+
+Cluster Feld 02 : Blue Polygon,ArrayFeld 6 8
+
+Cluster Feld 10 : leer,ArrayFeld 7 6
+
+Cluster Feld 11 : leer,ArrayFeld 7 7
+
+Cluster Feld 12 : leer,ArrayFeld 7 8
+
+Cluster Feld 20 : Blue Polygon,ArrayFeld 8 6
+
+Cluster Feld 21 : Red Square,ArrayFeld 8 7
+
+Cluster Feld 22 : leer,ArrayFeld 8 8
+
+Start searchAround i=7, j=7, hint =-1
+
+Ignore: 2 0
+
+Start searchAround i=7, j=7, hint =-1
+
+searchAround if(i+3<=maxX) 7 7
+
+Looking for : Blue Triangle, Found:  Green Square at tick 24
+
+Cluster Feld 00 : leer,ArrayFeld 9 6
+
+Cluster Feld 01 : Red Triangle,ArrayFeld 9 7
+
+Cluster Feld 02 : leer,ArrayFeld 9 8
+
+Cluster Feld 10 : leer,ArrayFeld 10 6
+
+Cluster Feld 11 : Green Square,ArrayFeld 10 7
+
+Cluster Feld 12 : Green Circle,ArrayFeld 10 8
+
+Cluster Feld 20 : leer,ArrayFeld 11 6
+
+Cluster Feld 21 : leer,ArrayFeld 11 7
+
+Cluster Feld 22 : leer,ArrayFeld 11 8
+
+43
+
+search if(j+3<=maxY)
+
+Looking for : Blue Triangle, Found:  leer at tick 26
+
+Cluster Feld 00 : Yellow Circle,ArrayFeld 0 9
+
+Cluster Feld 01 : leer,ArrayFeld 0 10
+
+Cluster Feld 02 : leer,ArrayFeld 0 11
+
+Cluster Feld 10 : leer,ArrayFeld 1 9
+
+Cluster Feld 11 : leer,ArrayFeld 1 10
+
+Cluster Feld 12 : Yellow Square,ArrayFeld 1 11
+
+Cluster Feld 20 : Green Square,ArrayFeld 2 9
+
+Cluster Feld 21 : leer,ArrayFeld 2 10
+
+Cluster Feld 22 : leer,ArrayFeld 2 11
+
+search if(i+3<=maxX)
+
+Looking for : Blue Triangle, Found:  Green Circle at tick 27
+
+Cluster Feld 00 : Red Triangle,ArrayFeld 3 9
+
+Cluster Feld 01 : leer,ArrayFeld 3 10
+
+Cluster Feld 02 : leer,ArrayFeld 3 11
+
+Cluster Feld 10 : Green Circle,ArrayFeld 4 9
+
+Cluster Feld 11 : Green Circle,ArrayFeld 4 10
+
+Cluster Feld 12 : leer,ArrayFeld 4 11
+
+Cluster Feld 20 : Green Triangle,ArrayFeld 5 9
+
+Cluster Feld 21 : leer,ArrayFeld 5 10
+
+Cluster Feld 22 : Blue Circle,ArrayFeld 5 11
+
+Start searchAround i=4, j=10, hint =1
+
+Ignore: 4 0
+
+Start searchAround i=4, j=10, hint =1
+
+searchAround if(i+3<=maxX) 4 10
+
+Looking for : Blue Triangle, Found:  leer at tick 30
+
+Cluster Feld 00 : leer,ArrayFeld 6 9
+
+Cluster Feld 01 : leer,ArrayFeld 6 10
+
+Cluster Feld 02 : Blue Square,ArrayFeld 6 11
+
+Cluster Feld 10 : Yellow Square,ArrayFeld 7 9
+
+Cluster Feld 11 : leer,ArrayFeld 7 10
+
+Cluster Feld 12 : leer,ArrayFeld 7 11
+
+Cluster Feld 20 : leer,ArrayFeld 8 9
+
+Cluster Feld 21 : Blue Polygon,ArrayFeld 8 10
+
+Cluster Feld 22 : leer,ArrayFeld 8 11
+
+Start searchAround i=7, j=10, hint =-1
+
+Ignore: 2 0
+
+Start searchAround i=7, j=10, hint =1
+
+Ignore: 6 2
+
+Start searchAround i=7, j=10, hint =0
+
+searchAround if(i+3<=maxX) 7 10
+
+Looking for : Blue Triangle, Found:  leer at tick 34
+
+Cluster Feld 00 : Red Square,ArrayFeld 9 9
+
+Cluster Feld 01 : leer,ArrayFeld 9 10
+
+Cluster Feld 02 : leer,ArrayFeld 9 11
+
+Cluster Feld 10 : leer,ArrayFeld 10 9
+
+Cluster Feld 11 : leer,ArrayFeld 10 10
+
+Cluster Feld 12 : leer,ArrayFeld 10 11
+
+Cluster Feld 20 : leer,ArrayFeld 11 9
+
+Cluster Feld 21 : leer,ArrayFeld 11 10
+
+Cluster Feld 22 : leer,ArrayFeld 11 11
+
+46
+
+Looking for: Blue Triangle
+
+Number of found elements: 2
+
+Ticks: 36/400
+
+Blue Triangle ,(x)=5,(y)=8
+
+Blue Triangle ,(x)=12,(y)=10
+
