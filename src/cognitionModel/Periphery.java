@@ -63,7 +63,6 @@ public class Periphery {
 	
 	public int searchAround(int ignore){ //2-oben 3-mitte 4-unten 5-oben und mitte 6-oben und unten 7-mitte und unten
 		int found = 0;
-		int searched =0;
 		int oben=0;
 		int unten=0;
 		int equal=0;
@@ -159,7 +158,6 @@ public class Periphery {
 						}
 					}
 				}
-				searched++;
 			}
 		}
 		if(found!=0){
