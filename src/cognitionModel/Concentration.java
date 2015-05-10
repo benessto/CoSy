@@ -57,7 +57,7 @@ public class Concentration {
 		String input = null;
 		
 		lineSeperator();
-		System.out.print("I'm waiting for a new task: ");
+		System.out.print("What should I look for?: ");
 		while(scanner.hasNextLine()){
 			return scanner.nextLine();
 		}
@@ -80,8 +80,7 @@ public class Concentration {
 	}
 	public void printResultFromMemory() {
 		lineSeperator();
-		System.out.println("Number of found elements: " + memory.getMemory(task));
-		System.out.println("Ticks: "+clock.getTicks()+"/"+clock.getMaxTime());
+		System.out.println("I remember! I found " + memory.getMemory(task) + " " + task +"(s) the last time I checked.");
 	}
 	
 	public void lineSeperator(){
