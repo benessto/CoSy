@@ -22,7 +22,7 @@ public class Concentration {
 		memory = new Memory();
 		RandomArrayGen arrayGen = new RandomArrayGen();
 		setVisual(arrayGen.RandomIntegerArray());	
-		clock.setMaxTime(500); //Max time in ticks
+		clock.getMaxTimeInput(); //Max time in ticks
 		
 		setSearched(getTaskInput());
 		maxX = visual.length;
