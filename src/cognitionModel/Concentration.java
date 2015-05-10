@@ -22,7 +22,6 @@ public class Concentration {
 		memory = new Memory();
 		RandomArrayGen arrayGen = new RandomArrayGen();
 		setVisual(arrayGen.RandomIntegerArray());	
-		clock.getMaxTimeInput(); //Max time in ticks
 		
 		setSearched(getTaskInput());
 		maxX = visual.length;
@@ -39,6 +38,7 @@ public class Concentration {
 		search(1,1); // Start search
 		printResult(); // Print all found elements in console
 		
+		clock.getMaxTimeInput(); //Max time in ticks
 		String newTask = getTaskInput(); // Get a new task
 		if(newTask != null) {
 			setSearched(newTask);
