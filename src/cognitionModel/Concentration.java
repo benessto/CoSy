@@ -35,6 +35,7 @@ public class Concentration {
 	
 	public void startTask() {
 		elements = new HashMap<Integer, Element>(); // Empty HashMap
+		clock.resetTicks();
 		if(!memory.hasMemory(task)){
 			search(1,1); // Start search
 			printResult(); // Print all found elements in console

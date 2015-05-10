@@ -22,6 +22,10 @@ public class Clock {
 		this.maxTime = maxTime;
 	}
 	
+	public void resetTicks(){
+		ticks = 0;
+	}
+	
 	public int getMaxTimeInput(){
 		Scanner scanner = new Scanner(System.in);
 		int input = -1;
