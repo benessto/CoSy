@@ -22,7 +22,7 @@ public class Concentration {
 		memory = new Memory();
 		RandomArrayGen arrayGen = new RandomArrayGen();
 		setVisual(arrayGen.RandomIntegerArray());	
-		
+		clock.getMaxTimeInput(); //Max time in ticks
 		setSearched(getTaskInput());
 		maxX = visual.length;
 		maxY = visual[0].length;
@@ -35,8 +35,13 @@ public class Concentration {
 	
 	public void startTask() {
 		elements = new HashMap<Integer, Element>(); // Empty HashMap
-		search(1,1); // Start search
-		printResult(); // Print all found elements in console
+		if(!memory.hasMemory(task)){
+			search(1,1); // Start search
+			printResult(); // Print all found elements in console
+		}else{
+			printResultFromMemory();
+		}
+		memory.memorize(task, elements.size());
 		
 		clock.getMaxTimeInput(); //Max time in ticks
 		String newTask = getTaskInput(); // Get a new task
@@ -71,6 +76,11 @@ public class Concentration {
 		for (Element element : elements.values()) {
 			System.out.println(((Element) element).getColor() + " " + ((Element) element).getForm() + " ,(x)="+((Element) element).getX() + ",(y)=" + ((Element) element).getY());
 		}
+	}
+	public void printResultFromMemory() {
+		lineSeperator();
+		System.out.println("Number of found elements: " + memory.getMemory(task));
+		System.out.println("Ticks: "+clock.getTicks()+"/"+clock.getMaxTime());
 	}
 	
 	public void lineSeperator(){
