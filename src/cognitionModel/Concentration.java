@@ -15,6 +15,8 @@ public class Concentration {
 	private int maxY;
 	private HashMap<Integer, Element> elements;		
 	private Memory  memory;
+	private Boolean useVisual = true;
+	public static Scanner SCANNER = new Scanner(System.in); 
 	
 	public Concentration() {
 		elements = new HashMap<Integer, Element>();
@@ -24,6 +26,7 @@ public class Concentration {
 		setVisual(arrayGen.RandomIntegerArray());	
 		clock.getMaxTimeInput(); //Max time in ticks
 		setSearched(getTaskInput());
+		useVisual = askToUseVisual();
 		maxX = visual.length;
 		maxY = visual[0].length;
 	}
@@ -36,32 +39,55 @@ public class Concentration {
 	public void startTask() {
 		elements = new HashMap<Integer, Element>(); // Empty HashMap
 		clock.resetTicks();
-		if(!memory.hasMemory(task)){
+		if(!memory.hasMemory(task)&&useVisual){
 			search(1,1); // Start search
 			printResult(); // Print all found elements in console
-		}else{
+		}else if(memory.hasMemory(task)){
 			printResultFromMemory();
+		}else{
+			printLineSeperator();
+			System.out.println("I can't answer that, you schould let me see the visual");
 		}
 		memory.memorize(task, elements.size());
 		
 		clock.getMaxTimeInput(); //Max time in ticks
 		String newTask = getTaskInput(); // Get a new task
+		useVisual = askToUseVisual();
 		if(newTask != null) {
 			setSearched(newTask);
 			startTask();
 		}
 	}
 	
-	public String getTaskInput() {
-		Scanner scanner = new Scanner(System.in);
-		String input = null;
+	public Boolean askToUseVisual(){
+		Scanner scanner = SCANNER;
+		scanner.reset();
 		
-		lineSeperator();
-		System.out.print("What should I look for?: ");
-		while(scanner.hasNextLine()){
-			return scanner.nextLine();
+		printLineSeperator();
+		System.out.print("Should I use the visual?(true/false): ");
+		if(scanner.hasNextBoolean()){
+			return scanner.nextBoolean();
 		}
-		scanner.close();
+		return true;
+		
+		
+	}
+	
+	public String getTaskInput() {
+		Scanner scanner = SCANNER;
+		scanner.reset();
+		String input = scanner.nextLine();
+		
+		printLineSeperator();
+		System.out.print("What should I look for?: ");
+		if(!input.equals("")){
+			
+			
+			return input;
+		} else if (scanner.hasNextLine()){
+			return scanner.nextLine();
+			//System.out.println("next  line:" + input);
+		}
 		return input;
 		
 	}
@@ -71,7 +97,7 @@ public class Concentration {
 	}
 	
 	public void printResult() {
-		lineSeperator();
+		printLineSeperator();
 		System.out.println("Number of found elements: " + elements.size());
 		System.out.println("Ticks: "+clock.getTicks()+"/"+clock.getMaxTime());
 		for (Element element : elements.values()) {
@@ -79,12 +105,15 @@ public class Concentration {
 		}
 	}
 	public void printResultFromMemory() {
-		lineSeperator();
+		printLineSeperator();
 		System.out.println("I remember! I found " + memory.getMemory(task) + " " + task +"(s) the last time I checked.");
 	}
 	
-	public void lineSeperator(){
+	public void printLineSeperator(){
 		System.out.println("---------------------------------"); 
+		//if(SCANNER.hasNextLine()){
+		//	SCANNER.nextLine();
+		//}
 
 	}
 
@@ -113,7 +142,7 @@ public class Concentration {
 			}
 		}
 		if (found) {
-			lineSeperator();
+			printLineSeperator();
 			for (String clusterString : clusterText) {
 				System.out.println(clusterString);
 			}

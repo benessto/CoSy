@@ -27,22 +27,25 @@ public class Clock {
 	}
 	
 	public int getMaxTimeInput(){
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = Concentration.SCANNER;
+		scanner.reset();
 		int input = -1;
 		
-		lineSeperator();
+		printLineSeperator();
 		System.out.print("Tell me how much time I have: ");
-		while(scanner.hasNextInt()){
+		if(scanner.hasNextInt()){
 			input = scanner.nextInt();
 			setMaxTime(input);
 			return input;
 			
 		}
-		scanner.close();
 		return input;
 	}
-	public void lineSeperator(){
+	public void printLineSeperator(){
 		System.out.println("---------------------------------"); 
+		/**if(Concentration.SCANNER.hasNextLine()){
+			Concentration.SCANNER.nextLine();
+		}**/
 
 	}
 	public boolean timeUp(){
