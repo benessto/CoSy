@@ -36,7 +36,7 @@ public class Concentration {
 		}
 	}
 	
-	public void startTask() {
+	public void startTask(Boolean working) {
 		elements = new HashMap<Integer, Element>(); // Empty HashMap
 		clock.resetTicks();
 		if(!memory.hasMemory(task)&&useVisual){
@@ -49,13 +49,17 @@ public class Concentration {
 			System.out.println("I can't answer that, you schould let me see the visual");
 		}
 		memory.memorize(task, elements.size());
-		
-		clock.getMaxTimeInput(); //Max time in ticks
-		String newTask = getTaskInput(); // Get a new task
-		useVisual = askToUseVisual();
-		if(newTask != null) {
-			setSearched(newTask);
-			startTask();
+		if(!working){
+			clock.getMaxTimeInput(); //Max time in ticks
+			String newTask = getTaskInput(); // Get a new task
+			String[] tasks = newTask.split(", ");
+			useVisual = askToUseVisual();
+			for(int i=0; i<tasks.length;i++){
+				if(tasks[i] != null) {
+					setSearched(tasks[i]);
+					startTask(true);
+				}
+			}
 		}
 	}
 	
@@ -84,7 +88,7 @@ public class Concentration {
 			
 			
 			return input;
-		} else if (scanner.hasNextLine()){
+		} else if(scanner.hasNextLine()){
 			return scanner.nextLine();
 			//System.out.println("next  line:" + input);
 		}
