@@ -24,9 +24,6 @@ public class Concentration {
 		memory = new Memory();
 		RandomArrayGen arrayGen = new RandomArrayGen();
 		setVisual(arrayGen.RandomIntegerArray());	
-		clock.getMaxTimeInput(); //Max time in ticks
-		setSearched(getTaskInput());
-		useVisual = askToUseVisual();
 		maxX = visual.length;
 		maxY = visual[0].length;
 	}
@@ -36,7 +33,7 @@ public class Concentration {
 		}
 	}
 	
-	public void startTask(Boolean working) {
+	public void startTask() {
 		elements = new HashMap<Integer, Element>(); // Empty HashMap
 		clock.resetTicks();
 		if(!memory.hasMemory(task)&&useVisual){
@@ -48,20 +45,33 @@ public class Concentration {
 			printLineSeperator();
 			System.out.println("I can't answer that, you schould let me see the visual");
 		}
-		memory.memorize(task, elements.size());
-		if(!working){
-			clock.getMaxTimeInput(); //Max time in ticks
-			String newTask = getTaskInput(); // Get a new task
-			String[] tasks = newTask.split(", ");
-			useVisual = askToUseVisual();
-			for(int i=0; i<tasks.length;i++){
-				if(tasks[i] != null) {
-					setSearched(tasks[i]);
-					startTask(true);
-				}
+		
+		if (clock.getTicks() <= clock.getMaxTime())
+			memory.memorize(task, elements.size());
+	}
+	
+	public void getNewTasks() {
+		clock.getMaxTimeInput(); //Max time in ticks
+		String newTask = getTaskInput(); // Get a new task
+		useVisual = askToUseVisual();
+		splitTasks(newTask);
+	}
+	
+	private void splitTasks (String task) {
+		
+		String[] tasks = task.split(", ");
+		
+		for(int i=0; i<tasks.length;i++){
+			if(tasks[i] != null) {
+				System.out.println("Splittask nr."+i);
+				setSearched(tasks[i]);
+				startTask();
 			}
 		}
+		
+		getNewTasks();
 	}
+	
 	
 	public Boolean askToUseVisual(){
 		Scanner scanner = SCANNER;
