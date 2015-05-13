@@ -17,6 +17,8 @@ public class Concentration {
 	private Memory  memory;
 	private Boolean useVisual = true;
 	public static Scanner SCANNER = new Scanner(System.in); 
+	private int sum;
+	private boolean canAnswer = true;
 	
 	public Concentration() {
 		elements = new HashMap<Integer, Element>();
@@ -38,22 +40,27 @@ public class Concentration {
 		clock.resetTicks();
 		if(!memory.hasMemory(task)&&useVisual){
 			search(1,1); // Start search
+			sum = sum + elements.size();
 			printResult(); // Print all found elements in console
 		}else if(memory.hasMemory(task)){
-			printResultFromMemory();
+			sum = sum + memory.getMemory(task);
+			//printResultFromMemory();
 		}else{
-			printLineSeperator();
-			System.out.println("I can't answer that, you schould let me see the visual");
+			//printLineSeperator();
+			//System.out.println("I can't answer that, you schould let me see the visual");
+			canAnswer = false;
 		}
 		
-		if (clock.getTicks() <= clock.getMaxTime())
-			memory.memorize(task, elements.size());
+		if (clock.getTicks() <= clock.getMaxTime() && useVisual){
+			memorize();
+		}
 	}
 	
 	public void getNewTasks() {
 		clock.getMaxTimeInput(); //Max time in ticks
 		String newTask = getTaskInput(); // Get a new task
 		useVisual = askToUseVisual();
+		sum = 0;
 		splitTasks(newTask);
 	}
 	
@@ -63,12 +70,19 @@ public class Concentration {
 		
 		for(int i=0; i<tasks.length;i++){
 			if(tasks[i] != null) {
-				System.out.println("Splittask nr."+i);
+				//System.out.println("Splittask nr."+i);
 				setSearched(tasks[i]);
 				startTask();
 			}
 		}
-		
+		if(canAnswer){
+			printLineSeperator();
+			System.out.println("All in all there are " + sum + " of the searched forms.");
+		}else{
+			printLineSeperator();
+			System.out.println("I can't answer that, you should let me see the visual");
+		}
+		canAnswer = true;
 		getNewTasks();
 	}
 	
@@ -155,12 +169,12 @@ public class Concentration {
 				}
 			}
 		}
-		if (found) {
+		/**if (found) {
 			printLineSeperator();
 			for (String clusterString : clusterText) {
 				System.out.println(clusterString);
 			}
-		}
+		}**/
 		periphery.setCluster(cluster);
 	}
 	
