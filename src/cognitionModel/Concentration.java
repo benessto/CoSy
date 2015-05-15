@@ -11,7 +11,7 @@ public class Concentration {
 	public static String[][] visual;
 	public static Scanner SCANNER = new Scanner(System.in); 
 	
-	private int groupID = 0;
+	private int groupID = 1;
 	private int numberOfSearched = 0;
 	private String task;
 	private Periphery periphery;
@@ -212,28 +212,32 @@ public class Concentration {
 		if(!elements.containsKey(element.getKoordinates())){
 			boolean foundGroup = VisualRoutines.FIND_GROUP(element);
 			elements.put(element.getKoordinates(), element);
-			elements.get(element.getKoordinates()).setGroupID(groupID);
 			
 			HashMap<Integer, Element> group = VisualRoutines.GROUP; 
 			
-			if (group.size() > 2) {
-				Element[] elementArray = new Element[group.size()];
-				elementArray[0] = element;
-				int i = 1;
-				
-				for(Iterator<Map.Entry<Integer, Element>> it = group.entrySet().iterator(); it.hasNext(); ) {
-					Map.Entry<Integer, Element> entry = it.next();
-					((Element) entry.getValue()).setGroupID(groupID);
+			if (group.size() > 1) {
+				if (elements.get(element.getKoordinates()).getGroupID() == 0) {
+					elements.get(element.getKoordinates()).setGroupID(groupID);
+					Element[] elementArray = new Element[group.size()];
+					elementArray[0] = element;
+					int i = 1;
 					
-				    if (!elements.containsKey(((Element) entry.getValue()).getKoordinates()) && i < elementArray.length) {
-				    	  elements.put(((Element) entry.getValue()).getKoordinates(), ((Element) entry.getValue()));
-				    	  elementArray[i] = ((Element) entry.getValue());
-				    	  i++;
+					for(Iterator<Map.Entry<Integer, Element>> it = group.entrySet().iterator(); it.hasNext(); ) {
+						Map.Entry<Integer, Element> entry = it.next();
+						if (((Element) entry.getValue()).getGroupID() == 0) { // Change only if no groupID assigned already
+							((Element) entry.getValue()).setGroupID(groupID);
+						}
+						
+					    if (!elements.containsKey(((Element) entry.getValue()).getKoordinates()) && i < elementArray.length ) {
+					    	  elements.put(((Element) entry.getValue()).getKoordinates(), ((Element) entry.getValue()));
+					    	  elementArray[i] = ((Element) entry.getValue());
+					    	  i++;
+					    }
 				    }
-			    }
-				groups.put(groupID, elementArray);
-				System.out.println("Size of group["+ groupID + "]: "+ groups.get(groupID).length);
-				groupID++;
+					groups.put(groupID, elementArray);
+					System.out.println("Size of group["+ groupID + "]: "+ groups.get(groupID).length);
+					groupID++;
+				}
 			}
 			
 			return foundGroup;
