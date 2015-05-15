@@ -13,7 +13,6 @@ public class Concentration {
 	
 	private int groupID = 0;
 	private int numberOfSearched = 0;
-	private Clock clock = new Clock();
 	private String task;
 	private Periphery periphery;
 	private int maxX;
@@ -43,7 +42,7 @@ public class Concentration {
 	
 	public void startTask() {
 		elements = new HashMap<Integer, Element>(); // Empty HashMap
-		clock.resetTicks();
+		Clock.resetTicks();
 		if(!memory.hasMemory(task)&&useVisual){
 			search(1,1); // Start search
 			sum = sum + elements.size();
@@ -57,13 +56,13 @@ public class Concentration {
 			canAnswer = false;
 		}
 		
-		if (clock.getTicks() <= clock.getMaxTime() && useVisual){
+		if (Clock.getTicks() <= Clock.getMaxTime() && useVisual){
 			memorize();
 		}
 	}
 	
 	public void getNewTasks() {
-		clock.getMaxTimeInput(); //Max time in ticks
+		Clock.getMaxTimeInput(); //Max time in ticks
 		String newTask = getTaskInput(); // Get a new task
 		useVisual = askToUseVisual();
 		sum = 0;
@@ -133,7 +132,7 @@ public class Concentration {
 	public void printResult() {
 		printLineSeperator();
 		System.out.println("Number of found elements: " + elements.size());
-		System.out.println("Ticks: "+clock.getTicks()+"/"+clock.getMaxTime());
+		System.out.println("Ticks: "+Clock.getTicks()+"/"+Clock.getMaxTime());
 		for (Element element : elements.values()) {
 			System.out.println(((Element) element).getColor() + " " + ((Element) element).getForm() + ", (x)="+((Element) element).getX() + ", (y)=" + ((Element) element).getY());
 		}
@@ -205,15 +204,19 @@ public class Concentration {
 		
 		if(!elements.containsKey(element.getKoordinates())){
 			elements.put(element.getKoordinates(), element);
+			elements.get(element.getKoordinates()).setGroupID(groupID);
 			HashMap<Integer, Element> group = VisualRoutines.FIND_GROUP(element);
 			
 			if (group.size() > 1) {
 				Element[] elementArray = new Element[group.size()];
-				int i = 0;
+				elementArray[0] = element;
+				int i = 1;
+				
 				for(Iterator<Map.Entry<Integer, Element>> it = group.entrySet().iterator(); it.hasNext(); ) {
 					Map.Entry<Integer, Element> entry = it.next();
 					((Element) entry.getValue()).setGroupID(groupID);
-				    if (!elements.containsKey(((Element) entry.getValue()).getKoordinates())) { //Remove elements that have less than 2 connections
+					
+				    if (!elements.containsKey(((Element) entry.getValue()).getKoordinates()) && i < elementArray.length) {
 				    	  elements.put(((Element) entry.getValue()).getKoordinates(), ((Element) entry.getValue()));
 				    	  elementArray[i] = ((Element) entry.getValue());
 				    	  i++;
@@ -228,14 +231,14 @@ public class Concentration {
 	
 	private boolean search(int i, int j){
 		boolean allSearched = false;
-		if(clock.getTicks()<=clock.getMaxTime()){ // Still have time?
-			//System.out.println("Looking for : " + task + ", Found:  " + visual[i][j] + " at tick " + clock.getTicks());
+		if(Clock.getTicks()<=Clock.getMaxTime()){ // Still have time?
+			//System.out.println("Looking for : " + task + ", Found:  " + visual[i][j] + " at tick " + Clock.getTicks());
 			//befindet sich in dem gegebenen Feld das gesuchte Objekt?
 			if (!elements.containsKey(i*100+j)) {
 				if(visual[i][j].equals(task)){
 					addElement(i,j);
 				}
-				clock.addTicks();
+				Clock.addTicks();
 			}
 			//Der Peripherie den aktuellen Cluster geben
 			setCluster(i, j);
@@ -271,7 +274,7 @@ public class Concentration {
 	
 	private boolean searchAround(int i, int j, int direction, int alreadytried, int rowsTried){
 		//System.out.println("Start searchAround i="+i+", j="+j + ", hint ="+direction);
-		if(clock.getTicks()<=clock.getMaxTime()){
+		if(Clock.getTicks()<=Clock.getMaxTime()){
 			int found = 0;
 			
 			if (!elements.containsKey((i+direction)*100+j-1)) {
@@ -296,7 +299,7 @@ public class Concentration {
 			}
 			
 			if (found > 0) {
-				clock.addTicks();
+				Clock.addTicks();
 			}
 			
 			
@@ -337,7 +340,7 @@ public class Concentration {
 	 * @param j y-Koordinate des angegebenen Felds
 	 */
 	private void searchThree(int i, int j){
-		if(clock.getTicks()<=clock.getMaxTime()){
+		if(Clock.getTicks()<=Clock.getMaxTime()){
 			
 			int found = 0;
 			
@@ -363,7 +366,7 @@ public class Concentration {
 			}
 			
 			if (found > 0) {
-				clock.addTicks();
+				Clock.addTicks();
 			}
 		}
 	}

@@ -3,37 +3,37 @@ package cognitionModel;
 import java.util.Scanner;
 
 public class Clock {
-	private int ticks=0;
-	private int maxTime;
-	private javax.swing.JLabel label;
+	private static int ticks=0;
+	private static int maxTime;
+	private static javax.swing.JLabel label;
 
-	public int getTicks() {
+	public static int getTicks() {
 		return ticks;
 	}
 
-	public void addTicks() {
+	public static void addTicks() {
 		ticks++;
 	}
 
-	public int getMaxTime() {
+	public static int getMaxTime() {
 		return maxTime;
 	}
 
-	public void setMaxTime(int maxTime, javax.swing.JLabel label) {
-		this.maxTime = maxTime;
+	public static void setMaxTime(int maxTime) {
+		Clock.maxTime = maxTime;
 	    //Interface.jLabel2.setText(Integer.toString(maxTime));
 	}
 	
-	public void resetTicks(){
+	public static void resetTicks(){
 		ticks = 0;
 	}
 	
-	public int getMaxTimeInput(){
+	public static int getMaxTimeInput(){
 		Scanner scanner = Concentration.SCANNER;
 		scanner.reset();
 		int input = -1;
 		
-		printLineSeperator();
+		Concentration.printLineSeperator();
 		System.out.print("Tell me how much time I have: ");
 		if(scanner.hasNextInt()){
 			input = scanner.nextInt();
@@ -43,14 +43,8 @@ public class Clock {
 		}
 		return input;
 	}
-	public void printLineSeperator(){
-		System.out.println("---------------------------------"); 
-		/**if(Concentration.SCANNER.hasNextLine()){
-			Concentration.SCANNER.nextLine();
-		}**/
 
-	}
-	public boolean timeUp(){
+	public static boolean timeUp(){
 		if (ticks>=maxTime){
 			return true;
 		}else{
