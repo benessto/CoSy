@@ -10,8 +10,8 @@ public class Concentration {
 	
 	public static String[][] visual;
 	public static Scanner SCANNER = new Scanner(System.in); 
+	public static int groupID = 1;
 	
-	private int groupID = 1;
 	private int numberOfSearched = 0;
 	private String task;
 	private Periphery periphery;
@@ -200,7 +200,12 @@ public class Concentration {
 	private void addElement(int x, int y) {
 		setNumberOfSearched(getNumberOfSearched() + 1);
 		String[] colorForm = task.split(" ");
-		Element element = new Element(x,y, colorForm[0], colorForm[1]);
+		Element element = null;
+		if (!elements.containsKey(x*100+y)) {
+			element = new Element(x,y, colorForm[0], colorForm[1]);
+		} else {
+			element = elements.get(x*100+y);
+		}
 		
 		if (!visualRoutine1(x,y, element)){
 			visualRoutine2(x,y,element);
@@ -208,41 +213,90 @@ public class Concentration {
 	}
 	
 	private boolean visualRoutine1 (int x, int y, Element element) {
-		
-		if(!elements.containsKey(element.getKoordinates())){
-			boolean foundGroup = VisualRoutines.FIND_GROUP(element);
-			elements.put(element.getKoordinates(), element);
-			
-			HashMap<Integer, Element> group = VisualRoutines.GROUP; 
-			
-			if (group.size() > 1) {
-				if (elements.get(element.getKoordinates()).getGroupID() == 0) {
-					elements.get(element.getKoordinates()).setGroupID(groupID);
-					Element[] elementArray = new Element[group.size()];
-					elementArray[0] = element;
-					int i = 1;
-					
-					for(Iterator<Map.Entry<Integer, Element>> it = group.entrySet().iterator(); it.hasNext(); ) {
-						Map.Entry<Integer, Element> entry = it.next();
-						if (((Element) entry.getValue()).getGroupID() == 0) { // Change only if no groupID assigned already
-							((Element) entry.getValue()).setGroupID(groupID);
-						}
-						
-					    if (!elements.containsKey(((Element) entry.getValue()).getKoordinates()) && i < elementArray.length ) {
-					    	  elements.put(((Element) entry.getValue()).getKoordinates(), ((Element) entry.getValue()));
-					    	  elementArray[i] = ((Element) entry.getValue());
-					    	  i++;
-					    }
-				    }
-					groups.put(groupID, elementArray);
-					System.out.println("Size of group["+ groupID + "]: "+ groups.get(groupID).length);
-					groupID++;
-				}
+			if (element.getGroupID() != 0) { //Already has a group?
+				return true;
 			}
 			
-			return foundGroup;
-		}
+			boolean foundGroup = VisualRoutines.FIND_GROUP(element);
+			elements.put(element.getKoordinates(), element);
+			HashMap<Integer, Element> group = VisualRoutines.GROUP;
 		
+		
+			if (foundGroup) {
+					
+				Element[] elementArray = new Element[group.size()];
+				
+				int i = 0;
+				for (Element e : group.values()) {
+					if (/*!elements.containsKey(e.getKoordinates()) &&*/e != null && i < elementArray.length) {
+						elements.put(e.getKoordinates(), e);
+						elementArray[i] = e;
+						System.out.println("New elementArray: "+elementArray[i].getElementAsString());
+					}
+					i++;
+				}
+				
+					
+				
+				boolean duplicate = false;
+				for (Element[] eArray : groups.values()) {
+					for (int f = 0; f < elementArray.length; f++) {
+						for (int g = 0; g < eArray.length; g++) {
+							if (elementArray[f].getKoordinates() == eArray[g].getKoordinates()) {
+								System.out.println("element: "+ element.getElementAsString());
+								System.out.println("eArray: "+ elementArray[f].getElementAsString());
+								System.out.println("There is "+elements.get(elementArray[f].getKoordinates()).getElementAsString());
+								duplicate = true;
+								break;
+							}
+						}
+					}
+				}
+				
+				if (!duplicate) {
+					groups.put(groupID, elementArray);
+					groupID++;
+				}
+				/**if (group.size() > 1) {
+					if (elements.get(element.getKoordinates()).getGroupID() == 0) {
+						System.out.println(elements.get(element.getKoordinates()).getElementAsString()+" has groupID "+elements.get(element.getKoordinates()).getGroupID());
+						elements.get(element.getKoordinates()).setGroupID(groupID);
+						System.out.println("Set ID to "+groupID);
+						Element[] elementArray = new Element[group.size()];
+						elementArray[0] = element;
+						int i = 1;
+						
+						for(Iterator<Map.Entry<Integer, Element>> it = group.entrySet().iterator(); it.hasNext(); ) {
+							Map.Entry<Integer, Element> entry = it.next();
+							if (((Element) entry.getValue()).getGroupID() == 0) { // Change only if no groupID assigned already
+								System.out.println(((Element) entry.getValue()).getElementAsString()+" has groupID "+((Element) entry.getValue()).getGroupID());
+								((Element) entry.getValue()).setGroupID(groupID);
+								System.out.println("Set ID to "+groupID);
+							}
+							
+						    if (!elements.containsKey(((Element) entry.getValue()).getKoordinates()) && i < elementArray.length ) {
+						    	  elements.put(((Element) entry.getValue()).getKoordinates(), ((Element) entry.getValue()));
+						    	  elementArray[i] = ((Element) entry.getValue());
+						    	  i++;
+						    }
+					    }
+						
+						boolean nullElement = false;
+						for (int k = 0; k < elementArray.length; k++ ) {
+							if (elementArray[k] == null) {
+								nullElement = true;
+							}
+						}
+						if (!nullElement) { // Arrays mit nulls ist keine volle Gruppe!
+							groups.put(groupID, elementArray);
+							System.out.println("Group["+ groupID + "]: "+ groups.get(groupID).length);
+							groupID++;
+						}
+						
+				}
+				**/
+				return foundGroup;
+		}
 		return false;
 	}
 	

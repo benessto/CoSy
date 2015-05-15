@@ -21,7 +21,11 @@ public class VisualRoutines {
 	      System.out.println(((Element) entry.getValue()).getColorAndForm() + "("+ ((Element) entry.getValue()).getX()+"|"+ ((Element) entry.getValue()).getY()+ "), Connections:" + ((Element) entry.getValue()).getConnections());
 	      if ( ((Element) entry.getValue()).getConnections() < 2 ) { //Remove elements that have less than 2 connections
 	        it.remove();
-	        //System.out.println("Removing: "+((Element) entry.getValue()).getColorAndForm() +", connections: "+((Element) entry.getValue()).getConnections());
+	        //System.out.println("Removing: "+((Element) entry.getValue()).getElementAsString() +", connections: "+((Element) entry.getValue()).getConnections());
+	      } else {
+	    	  System.out.println(entry.getValue().getElementAsString()+" has groupID " + entry.getValue().getGroupID());
+	    	  System.out.println("Set ID to "+Concentration.groupID);
+	    	  entry.getValue().setGroupID(Concentration.groupID);
 	      }
 	    }
 		

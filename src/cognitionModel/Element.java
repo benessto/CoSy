@@ -76,5 +76,9 @@ public class Element {
 	public void setGroupID(int groupID) {
 		this.groupID = groupID;
 	}
+	
+	public String getElementAsString() {
+		return color+" "+form+"("+x+"|"+y+")";
+	}
 
 }
