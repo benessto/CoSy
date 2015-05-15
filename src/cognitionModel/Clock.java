@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Clock {
 	private int ticks=0;
 	private int maxTime;
+	private javax.swing.JLabel label;
 
 	public int getTicks() {
 		return ticks;
@@ -18,8 +19,9 @@ public class Clock {
 		return maxTime;
 	}
 
-	public void setMaxTime(int maxTime) {
+	public void setMaxTime(int maxTime, javax.swing.JLabel label) {
 		this.maxTime = maxTime;
+	    //Interface.jLabel2.setText(Integer.toString(maxTime));
 	}
 	
 	public void resetTicks(){
