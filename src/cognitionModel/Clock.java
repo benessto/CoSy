@@ -19,7 +19,7 @@ public class Clock {
 		return maxTime;
 	}
 
-	public void setMaxTime(int maxTime, javax.swing.JLabel label) {
+	public void setMaxTime(int maxTime) {
 		this.maxTime = maxTime;
 	    //Interface.jLabel2.setText(Integer.toString(maxTime));
 	}

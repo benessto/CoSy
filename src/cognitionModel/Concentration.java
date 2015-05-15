@@ -198,7 +198,7 @@ public class Concentration {
 		periphery.setCluster(cluster);
 	}
 	
-	private void addElement(int x, int y) {
+	/**private void addElement(int x, int y) {
 		setNumberOfSearched(getNumberOfSearched() + 1);
 		String[] colorForm = task.split(" ");
 		Element element = new Element(x,y, colorForm[0], colorForm[1]);
@@ -222,6 +222,23 @@ public class Concentration {
 				groups.put(groupID, elementArray);
 				System.out.println("Size of group["+ groupID + "]: "+ groups.get(groupID).length);
 				groupID++;
+			}
+		}
+	}**/
+	
+	private void addElement(int x, int y){
+		String[] colorForm = task.split(" ");
+		Element element = new Element(x,y, colorForm[0], colorForm[1]);
+		
+		if(!elements.containsKey(element.getKoordinates())){
+			elements.put(element.getKoordinates(), element);
+			if(VisualRoutine2.findGroup(element)){
+				for(Element e : VisualRoutine2.group){
+					if(!elements.containsKey(e.getKoordinates())){
+						elements.put(e.getKoordinates(), e);
+					}
+					System.out.println("Element: " + e.getColorAndForm() + " " + e.getKoordinates());
+				}
 			}
 		}
 	}
