@@ -2,26 +2,32 @@ package cognitionModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Concentration {
 	
-	private String[][] visual;
+	public static String[][] visual;
+	public static Scanner SCANNER = new Scanner(System.in); 
+	
+	private int groupID = 0;
 	private int numberOfSearched = 0;
 	private Clock clock = new Clock();
 	private String task;
 	private Periphery periphery;
 	private int maxX;
 	private int maxY;
-	private HashMap<Integer, Element> elements;		
+	private HashMap<Integer, Element> elements;	
+	private HashMap<Integer, Element[]> groups;	
 	private Memory  memory;
 	private Boolean useVisual = true;
-	public static Scanner SCANNER = new Scanner(System.in); 
 	private int sum;
 	private boolean canAnswer = true;
 	
 	public Concentration() {
 		elements = new HashMap<Integer, Element>();
+		groups = new HashMap<Integer, Element[]>();
 		periphery = new Periphery();
 		memory = new Memory();
 		RandomArrayGen arrayGen = new RandomArrayGen();
@@ -129,15 +135,28 @@ public class Concentration {
 		System.out.println("Number of found elements: " + elements.size());
 		System.out.println("Ticks: "+clock.getTicks()+"/"+clock.getMaxTime());
 		for (Element element : elements.values()) {
-			System.out.println(((Element) element).getColor() + " " + ((Element) element).getForm() + " ,(x)="+((Element) element).getX() + ",(y)=" + ((Element) element).getY());
+			System.out.println(((Element) element).getColor() + " " + ((Element) element).getForm() + ", (x)="+((Element) element).getX() + ", (y)=" + ((Element) element).getY());
+		}
+		printLineSeperator();
+		for (Integer groupID : groups.keySet()) {
+			System.out.println("Group ID: " + groupID);
+			//for (Element[] element : groups.values()) {
+				//if (element[0].getGroupID() == groupID) {
+					Element[] elementArr = groups.get(groupID);
+					for (int i = 0; i < elementArr.length && elementArr[i] != null; i++) {
+						System.out.println ("    "+elementArr[i].getColor() + " " + elementArr[i].getForm() + " ,(x)=" + (elementArr[i].getX() + ", (y)=" + elementArr[i].getY()));
+					}
+					//}
+			//}
 		}
 	}
+	
 	public void printResultFromMemory() {
 		printLineSeperator();
 		System.out.println("I remember! I found " + memory.getMemory(task) + " " + task +"(s) the last time I checked.");
 	}
 	
-	public void printLineSeperator(){
+	public static void printLineSeperator(){
 		System.out.println("---------------------------------"); 
 		//if(SCANNER.hasNextLine()){
 		//	SCANNER.nextLine();
@@ -146,7 +165,7 @@ public class Concentration {
 	}
 
 	public void setVisual(String[][] visual) {
-		this.visual = visual;
+		Concentration.visual = visual;
 		maxX = visual.length;
 		maxY = visual[0].length;
 	}
@@ -154,7 +173,7 @@ public class Concentration {
 	private void setCluster(int i, int j){
 		String[][] cluster= new String[3][3];
 		ArrayList<String> clusterText = new ArrayList<String>();
-		boolean found = false;
+		//boolean found = false;
 		
 		for(int h=0;h<3;h++){
 			for(int k=0;k<3;k++){
@@ -164,7 +183,8 @@ public class Concentration {
 					int test2 = j-1+k;
 					clusterText.add("Cluster Feld "+ h + k +" : " + cluster[h][k] + ",ArrayFeld " + test1 +  " " + test2);
 					if (visual[i-1+h][j-1+k].equals(task)){
-						found = true;
+						//found = true;
+						addElement(i-1+h, j-1+k);
 					}
 				}
 			}
@@ -178,21 +198,45 @@ public class Concentration {
 		periphery.setCluster(cluster);
 	}
 	
+	private void addElement(int x, int y) {
+		setNumberOfSearched(getNumberOfSearched() + 1);
+		String[] colorForm = task.split(" ");
+		Element element = new Element(x,y, colorForm[0], colorForm[1]);
+		
+		if(!elements.containsKey(element.getKoordinates())){
+			elements.put(element.getKoordinates(), element);
+			HashMap<Integer, Element> group = VisualRoutines.FIND_GROUP(element);
+			
+			if (group.size() > 1) {
+				Element[] elementArray = new Element[group.size()];
+				int i = 0;
+				for(Iterator<Map.Entry<Integer, Element>> it = group.entrySet().iterator(); it.hasNext(); ) {
+					Map.Entry<Integer, Element> entry = it.next();
+					((Element) entry.getValue()).setGroupID(groupID);
+				    if (!elements.containsKey(((Element) entry.getValue()).getKoordinates())) { //Remove elements that have less than 2 connections
+				    	  elements.put(((Element) entry.getValue()).getKoordinates(), ((Element) entry.getValue()));
+				    	  elementArray[i] = ((Element) entry.getValue());
+				    	  i++;
+				    }
+			    }
+				groups.put(groupID, elementArray);
+				System.out.println("Size of group["+ groupID + "]: "+ groups.get(groupID).length);
+				groupID++;
+			}
+		}
+	}
+	
 	private boolean search(int i, int j){
 		boolean allSearched = false;
 		if(clock.getTicks()<=clock.getMaxTime()){ // Still have time?
 			//System.out.println("Looking for : " + task + ", Found:  " + visual[i][j] + " at tick " + clock.getTicks());
 			//befindet sich in dem gegebenen Feld das gesuchte Objekt?
-			if(visual[i][j].equals(task)){
-				//System.out.println("Found an element at"+i+","+j);
-				setNumberOfSearched(getNumberOfSearched() + 1);
-				String[] colorForm = task.split(" ");
-				Element element = new Element(i,j, colorForm[0], colorForm[1]);
-				if(!elements.containsKey(element.getKoordinates())){
-					elements.put(element.getKoordinates(), element);
+			if (!elements.containsKey(i*100+j)) {
+				if(visual[i][j].equals(task)){
+					addElement(i,j);
 				}
+				clock.addTicks();
 			}
-			clock.addTicks();
 			//Der Peripherie den aktuellen Cluster geben
 			setCluster(i, j);
 			//ergebniss der peripherie abfragen
@@ -228,32 +272,34 @@ public class Concentration {
 	private boolean searchAround(int i, int j, int direction, int alreadytried, int rowsTried){
 		//System.out.println("Start searchAround i="+i+", j="+j + ", hint ="+direction);
 		if(clock.getTicks()<=clock.getMaxTime()){
-			if(i+direction<maxX && j-1>=0 && visual[i+direction][j-1].equals(task)){
-				//System.out.println("searchArround1: Found an element");
-				String[] colorForm = task.split(" ");
-				Element element = new Element(i+direction,j-1, colorForm[0], colorForm[1]);
-				if(!elements.containsKey(element.getKoordinates())){
-					elements.put(element.getKoordinates(), element);
+			int found = 0;
+			
+			if (!elements.containsKey((i+direction)*100+j-1)) {
+				if(i+direction<maxX && j-1>=0 && visual[i+direction][j-1].equals(task)){
+					addElement(i+direction, j-1);
+					found++;
 				}
 			}
-			if(i+direction<maxX && visual[i+direction][j].equals(task)){
-				//System.out.println("searchArround2: Found an element");
-				String[] colorForm = task.split(" ");
-				Element element = new Element(i+direction,j, colorForm[0], colorForm[1]);
-				if(!elements.containsKey(element.getKoordinates())){
-					elements.put(element.getKoordinates(), element);
+			
+			if (!elements.containsKey((i+direction)*100+j)) {
+				if(i+direction<maxX && visual[i+direction][j].equals(task)){
+					addElement(i+direction, j);
+					found++;
 				}
 			}
-			if(i+direction<maxX && j+1<maxY && visual[i+direction][j+1].equals(task)){
-//				System.out.println("searchArround3: Found an element");
-				String[] colorForm = task.split(" ");
-				Element element = new Element(i+direction,j+1, colorForm[0], colorForm[1]);
-				if(!elements.containsKey(element.getKoordinates())){
-					elements.put(element.getKoordinates(), element);
+			if (!elements.containsKey((i+direction)*100+j+1)) {
+				if(i+direction<maxX && j+1<maxY && visual[i+direction][j+1].equals(task)){
+					addElement(i+direction,j+1);
+					found++;
 				}
+				
 			}
-		
-			clock.addTicks();
+			
+			if (found > 0) {
+				clock.addTicks();
+			}
+			
+			
 			int toIgnore=0;
 			if(direction<0){
 				toIgnore=2 + rowsTried;
@@ -292,32 +338,33 @@ public class Concentration {
 	 */
 	private void searchThree(int i, int j){
 		if(clock.getTicks()<=clock.getMaxTime()){
-//			System.out.println(i + j + maxX + maxY);
-			if(j-1>=0 && i+1<maxX && visual[i+1][j-1].equals(task)){
-				setNumberOfSearched(getNumberOfSearched() + 1);
-				String[] colorForm = task.split(" ");
-				Element element = new Element(i+1,j-1, colorForm[0], colorForm[1]);
-				if(!elements.containsKey(element.getKoordinates())){
-					elements.put(element.getKoordinates(), element);
+			
+			int found = 0;
+			
+			if (elements.containsKey((i+1)*100+j-1)) {
+				if(j-1>=0 && i+1<maxX && visual[i+1][j-1].equals(task)){
+					addElement(i+1, j-1);
+					found++;
 				}
 			}
-			if(i+1<maxX && visual[i+1][j].equals(task)){
-				setNumberOfSearched(getNumberOfSearched() + 1);
-				String[] colorForm = task.split(" ");
-				Element element = new Element(i+1,j, colorForm[0], colorForm[1]);
-				if(!elements.containsKey(element.getKoordinates())){
-					elements.put(element.getKoordinates(), element);
+			
+			if (elements.containsKey((i+1)*100+j)) {
+				if(i+1<maxX && visual[i+1][j].equals(task)){
+					addElement(i+1, j);
+					found++;
 				}
 			}
-			if(j+1<maxY && i+1<maxX && visual[i+1][j+1].equals(task)){
-				setNumberOfSearched(getNumberOfSearched() + 1);
-				String[] colorForm = task.split(" ");
-				Element element = new Element(i+1,j+1, colorForm[0], colorForm[1]);
-				if(!elements.containsKey(element.getKoordinates())){
-					elements.put(element.getKoordinates(), element);
+			
+			if (elements.containsKey((i+1)*100+j+1)) {
+				if(j+1<maxY && i+1<maxX && visual[i+1][j+1].equals(task)){
+					addElement(i+1, j+1);
+					found++;
 				}
 			}
-			clock.addTicks();
+			
+			if (found > 0) {
+				clock.addTicks();
+			}
 		}
 	}
 	

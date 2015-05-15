@@ -7,6 +7,7 @@ public class Element {
 	private String color;
 	private String form;
 	private int connections = 0;
+	private int groupID;
 	
 	public Element(int x, int y, String color, String form){
 		setX(x);
@@ -14,6 +15,10 @@ public class Element {
 		setKoordinates(x, y);
 		setColor(color);
 		setForm(form);
+	}
+	
+	public String getColorAndForm() {
+		return color+" "+form;
 	}
 
 	public int getX() {
@@ -62,6 +67,14 @@ public class Element {
 
 	public void addConnections() {
 		connections++;
+	}
+
+	public int getGroupID() {
+		return groupID;
+	}
+
+	public void setGroupID(int groupID) {
+		this.groupID = groupID;
 	}
 
 }
