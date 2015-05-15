@@ -257,44 +257,7 @@ public class Concentration {
 					groups.put(groupID, elementArray);
 					groupID++;
 				}
-				/**if (group.size() > 1) {
-					if (elements.get(element.getKoordinates()).getGroupID() == 0) {
-						System.out.println(elements.get(element.getKoordinates()).getElementAsString()+" has groupID "+elements.get(element.getKoordinates()).getGroupID());
-						elements.get(element.getKoordinates()).setGroupID(groupID);
-						System.out.println("Set ID to "+groupID);
-						Element[] elementArray = new Element[group.size()];
-						elementArray[0] = element;
-						int i = 1;
-						
-						for(Iterator<Map.Entry<Integer, Element>> it = group.entrySet().iterator(); it.hasNext(); ) {
-							Map.Entry<Integer, Element> entry = it.next();
-							if (((Element) entry.getValue()).getGroupID() == 0) { // Change only if no groupID assigned already
-								System.out.println(((Element) entry.getValue()).getElementAsString()+" has groupID "+((Element) entry.getValue()).getGroupID());
-								((Element) entry.getValue()).setGroupID(groupID);
-								System.out.println("Set ID to "+groupID);
-							}
-							
-						    if (!elements.containsKey(((Element) entry.getValue()).getKoordinates()) && i < elementArray.length ) {
-						    	  elements.put(((Element) entry.getValue()).getKoordinates(), ((Element) entry.getValue()));
-						    	  elementArray[i] = ((Element) entry.getValue());
-						    	  i++;
-						    }
-					    }
-						
-						boolean nullElement = false;
-						for (int k = 0; k < elementArray.length; k++ ) {
-							if (elementArray[k] == null) {
-								nullElement = true;
-							}
-						}
-						if (!nullElement) { // Arrays mit nulls ist keine volle Gruppe!
-							groups.put(groupID, elementArray);
-							System.out.println("Group["+ groupID + "]: "+ groups.get(groupID).length);
-							groupID++;
-						}
-						
-				}
-				**/
+				
 				return foundGroup;
 		}
 		return false;
