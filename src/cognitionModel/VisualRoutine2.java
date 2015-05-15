@@ -12,7 +12,7 @@ public class VisualRoutine2 {
 		int x = element.getX();
 		int y = element.getY();
 		group.add(element);
-		if(x-1<Concentration.visual.length&&x-1>=0&&x+1<Concentration.visual.length&&x+1>=0&&y-1>=0&&y-1<Concentration.visual[0].length&&y+1>=0&&y+1<Concentration.visual[0].length)
+		if(x+1<Concentration.visual.length&&x-1>=0&&x+1<Concentration.visual.length&&x+1>=0&&y-1>=0&&y+1<Concentration.visual[0].length&&y+1>=0&&y+1<Concentration.visual[0].length)
 		{
 			if(Concentration.visual[x-1][y-1].equals(element.getColorAndForm())){
 				if(Concentration.visual[x+1][y+1].equals(element.getColorAndForm())){
@@ -32,7 +32,7 @@ public class VisualRoutine2 {
 				}
 			}
 		}
-		if(x+2<Concentration.visual.length&&x+2>=0&&y+2>=0&&y+2<Concentration.visual[0].length)
+		if(x+2<Concentration.visual.length&&x>=0&&y>=0&&y+2<Concentration.visual[0].length)
 		{
 			if(Concentration.visual[x][y+2].equals(element.getColorAndForm())){
 				if(Concentration.visual[x+1][y+1].equals(element.getColorAndForm())){
@@ -52,7 +52,7 @@ public class VisualRoutine2 {
 				}
 			}
 		}
-		if(x-2<Concentration.visual.length&&x-2>=0&&y+2>=0&&y+2<Concentration.visual[0].length)
+		if(x<Concentration.visual.length&&x-2>=0&&y>=0&&y+2<Concentration.visual[0].length)
 		{
 			if(Concentration.visual[x-2][y].equals(element.getColorAndForm())){
 				if(Concentration.visual[x-2][y+2].equals(element.getColorAndForm())){
@@ -72,7 +72,7 @@ public class VisualRoutine2 {
 				}
 			}
 		}
-		if(x+2<Concentration.visual.length&&x+2>=0&&y-2>=0&&y-2<Concentration.visual[0].length)
+		if(x+2<Concentration.visual.length&&x-1>=0&&y-2>=0&&y<Concentration.visual[0].length)
 		{
 			if(Concentration.visual[x-1][y-1].equals(element.getColorAndForm())){
 				if(Concentration.visual[x][y-2].equals(element.getColorAndForm())){
@@ -92,7 +92,7 @@ public class VisualRoutine2 {
 				}
 			}
 		}
-		if(x-2<Concentration.visual.length&&x-2>=0&&y-2>=0&&y-2<Concentration.visual[0].length)
+		if(x<Concentration.visual.length&&x-2>=0&&y-2>=0&&y<Concentration.visual[0].length)
 		{
 			if(Concentration.visual[x-1][y-1].equals(element.getColorAndForm())){
 				if(Concentration.visual[x-2][y-2].equals(element.getColorAndForm())){

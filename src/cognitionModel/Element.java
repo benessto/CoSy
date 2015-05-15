@@ -7,7 +7,7 @@ public class Element {
 	private String color;
 	private String form;
 	private int connections = 0;
-	private int groupID;
+	private int groupID = 0;
 	
 	public Element(int x, int y, String color, String form){
 		setX(x);

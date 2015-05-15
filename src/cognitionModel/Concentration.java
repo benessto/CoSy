@@ -11,7 +11,7 @@ public class Concentration {
 	public static String[][] visual;
 	public static Scanner SCANNER = new Scanner(System.in); 
 	
-	private int groupID = 0;
+	private int groupID = 1;
 	private int numberOfSearched = 0;
 	private String task;
 	private Periphery periphery;
@@ -244,19 +244,26 @@ public class Concentration {
 	
 	
 	private boolean visualRoutine2(int x, int y, Element element){
-		
-		if(!elements.containsKey(element.getKoordinates())){
-			elements.put(element.getKoordinates(), element);
 			if(VisualRoutine2.findGroup(element)){
+				element.setGroupID(groupID);
+				
+				Element[] elementArray = new Element[VisualRoutine2.group.size()];
+				elementArray[0] = element;
+				int i = 1;
+				
 				for(Element e : VisualRoutine2.group){
-					if(!elements.containsKey(e.getKoordinates())){
+					if(!elements.containsKey(e.getKoordinates())&& i < elementArray.length){
 						elements.put(e.getKoordinates(), e);
-					}
-					System.out.println("Element: " + e.getColorAndForm() + " " + e.getKoordinates());
+						e.setGroupID(groupID);
+				    	elementArray[i] = e;
+				    	i++;
+				    }
+					//System.out.println("Element: " + e.getColorAndForm() + " " + e.getKoordinates());
 				}
+				groups.put(groupID, elementArray);
+				groupID++;
 				return true;
 			}
-		}
 		
 		return false;
 	}
