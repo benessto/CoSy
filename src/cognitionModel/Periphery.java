@@ -58,7 +58,7 @@ public class Periphery {
 				return 1;
 			}
 		}
-		return 5;
+		return 50;
 	}
 	
 	public int searchAround(int ignore){ //2-oben 3-mitte 4-unten 5-oben und mitte 6-oben und unten 7-mitte und unten
@@ -169,7 +169,7 @@ public class Periphery {
 				return 1;
 			}
 		}
-		return 5;
+		return 50;
 	}
 
 }

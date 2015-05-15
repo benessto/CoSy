@@ -7,6 +7,28 @@ public class RandomArrayGen {
 	private String[] translate = { "Blue Square", "Blue Triangle", "Blue Circle", "Blue Polygon", "Yellow Square", 
 					"Yellow Triangle", "Yellow Circle", "Yellow Polygon", "Green Square", "Green Triangle", 
 					"Green Circle", "Green Polygon", "Red Square", "Red Triangle", "Red Circle", "Red Polygon", "leer" };
+	private static String[][] testArray = {
+		{"leer", "Red Polygon", "Red Polygon", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "Red Polygon", "Red Polygon", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "Red Polygon", "Red Polygon", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+		{"leer", "leer", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer", "leer"},
+	};
 	
 	public String IntegerToString(int a){
 		String word = translate[a];
@@ -15,8 +37,8 @@ public class RandomArrayGen {
 	
 	public String[][] RandomIntegerArray(){
 		Random randominteger = new Random();
-		int ysize = randominteger.nextInt(17)+3;
-		int xsize = randominteger.nextInt(17)+3;
+		int ysize = 20; //randominteger.nextInt(17)+3;
+		int xsize = 20; //randominteger.nextInt(17)+3;
 		
 		String[][] randomarray = new String[ysize][xsize];
 		
@@ -27,11 +49,11 @@ public class RandomArrayGen {
 					nextField = 16;
 				}
 				randomarray[cy][cx] = IntegerToString(nextField);
-				System.out.println("Array Feld : "+ cy + " " + cx + " " + randomarray[cy][cx]);
+				System.out.println("Array Feld : "+ cy + " " + cx + " " + testArray[cy][cx]);
 			}
 			
 		}
-		return randomarray;
+		return testArray;
 	}
 	
 	public String randomTask(){

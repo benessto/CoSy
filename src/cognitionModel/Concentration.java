@@ -263,7 +263,7 @@ public class Concentration {
 				toIgnore=4 + rowsTried;
 			}
 			int hint = periphery.searchAround(alreadytried+3);
-			if(hint!=5){
+			if(hint!=50){
 //				System.out.println("Ignore: " + toIgnore +" "+ rowsTried);
 				searchAround(i,  j, hint, alreadytried+3, toIgnore+rowsTried);
 			}else{
