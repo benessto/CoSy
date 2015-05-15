@@ -8,7 +8,7 @@ import java.util.Map;
 public class VisualRoutines {
 	public static HashMap<Integer, Element> GROUP = new HashMap<Integer, Element>();
 	
-	public static HashMap<Integer, Element> FIND_GROUP(Element element){
+	public static boolean FIND_GROUP(Element element){
 		GROUP.clear();
 		GROUP.put(element.getKoordinates(), element);
 		FIND_CONNECTION (element, 'Y', -1);
@@ -25,7 +25,11 @@ public class VisualRoutines {
 	      }
 	    }
 		
-		return GROUP;
+		if (GROUP.size() > 2) {
+			return true;
+		}
+		
+		return false;
 	}
 	
 	private static void FIND_CONNECTION(Element element, char XY, int direction) {

@@ -202,12 +202,21 @@ public class Concentration {
 		String[] colorForm = task.split(" ");
 		Element element = new Element(x,y, colorForm[0], colorForm[1]);
 		
+		if (!visualRoutine1(x,y, element)){
+			visualRoutine2(x,y,element);
+		}
+	}
+	
+	private boolean visualRoutine1 (int x, int y, Element element) {
+		
 		if(!elements.containsKey(element.getKoordinates())){
+			boolean foundGroup = VisualRoutines.FIND_GROUP(element);
 			elements.put(element.getKoordinates(), element);
 			elements.get(element.getKoordinates()).setGroupID(groupID);
-			HashMap<Integer, Element> group = VisualRoutines.FIND_GROUP(element);
 			
-			if (group.size() > 1) {
+			HashMap<Integer, Element> group = VisualRoutines.GROUP; 
+			
+			if (group.size() > 2) {
 				Element[] elementArray = new Element[group.size()];
 				elementArray[0] = element;
 				int i = 1;
@@ -226,7 +235,30 @@ public class Concentration {
 				System.out.println("Size of group["+ groupID + "]: "+ groups.get(groupID).length);
 				groupID++;
 			}
+			
+			return foundGroup;
 		}
+		
+		return false;
+	}
+	
+	
+	private boolean visualRoutine2(int x, int y, Element element){
+		
+		if(!elements.containsKey(element.getKoordinates())){
+			elements.put(element.getKoordinates(), element);
+			if(VisualRoutine2.findGroup(element)){
+				for(Element e : VisualRoutine2.group){
+					if(!elements.containsKey(e.getKoordinates())){
+						elements.put(e.getKoordinates(), e);
+					}
+					System.out.println("Element: " + e.getColorAndForm() + " " + e.getKoordinates());
+				}
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	private boolean search(int i, int j){

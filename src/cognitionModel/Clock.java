@@ -21,7 +21,6 @@ public class Clock {
 
 	public static void setMaxTime(int maxTime) {
 		Clock.maxTime = maxTime;
-	    //Interface.jLabel2.setText(Integer.toString(maxTime));
 	}
 	
 	public static void resetTicks(){
