@@ -19,9 +19,13 @@ public class VisualRoutines {
 		for(Iterator<Map.Entry<Integer, Element>> it = GROUP.entrySet().iterator(); it.hasNext(); ) {
 	      Map.Entry<Integer, Element> entry = it.next();
 	      System.out.println(((Element) entry.getValue()).getColorAndForm() + "("+ ((Element) entry.getValue()).getX()+"|"+ ((Element) entry.getValue()).getY()+ "), Connections:" + ((Element) entry.getValue()).getConnections());
-	      if ( ((Element) entry.getValue()).getConnections() < 2 ) { //Remove elements that have less than 2 connections
+	      if ( ((Element) entry.getValue()).getConnections() < 2 //Remove elements that have less than 2 connections
+	    		  ||((Element) entry.getValue()).getX()>element.getX()+2
+	    		  ||((Element) entry.getValue()).getX()<element.getX()-2
+	    		  ||((Element) entry.getValue()).getY()>element.getY()+2
+	    		  ||((Element) entry.getValue()).getY()<element.getY()-2) { 
 	        it.remove();
-	        //System.out.println("Removing: "+((Element) entry.getValue()).getElementAsString() +", connections: "+((Element) entry.getValue()).getConnections());
+	        System.out.println("Removing: "+((Element) entry.getValue()).getElementAsString() +", connections: "+((Element) entry.getValue()).getConnections());
 	      } else {
 	    	  System.out.println(entry.getValue().getElementAsString()+" has groupID " + entry.getValue().getGroupID());
 	    	  System.out.println("Set ID to "+Concentration.groupID);
