@@ -23,6 +23,7 @@ public class Concentration {
 	private Boolean useVisual = true;
 	private int sum;
 	private boolean canAnswer = true;
+	private String searchType;
 	
 	public Concentration() {
 		elements = new HashMap<Integer, Element>();
@@ -63,6 +64,7 @@ public class Concentration {
 	
 	public void getNewTasks() {
 		Clock.getMaxTimeInput(); //Max time in ticks
+		searchType = getSearchType();
 		String newTask = getTaskInput(); // Get a new task
 		useVisual = askToUseVisual();
 		sum = 0;
@@ -70,7 +72,6 @@ public class Concentration {
 	}
 	
 	private void splitTasks (String task) {
-		
 		String[] tasks = task.split(", ");
 		
 		for(int i=0; i<tasks.length;i++){
@@ -123,6 +124,24 @@ public class Concentration {
 		}
 		return input;
 		
+	}
+	
+	private String getSearchType(){
+		Scanner scanner = SCANNER;
+		scanner.reset();
+		String input = scanner.nextLine();
+		
+		printLineSeperator();
+		System.out.print("Should I search for an Object, a Colorgroup, a Proximitygroup or a Formgroup?: ");
+		if(!input.equals("")){
+			
+			
+			return input;
+		} else if(scanner.hasNextLine()){
+			return scanner.nextLine();
+			//System.out.println("next  line:" + input);
+		}
+		return input;
 	}
 	
 	public String[][] getVisual() {
@@ -287,6 +306,11 @@ public class Concentration {
 			}
 		
 		return false;
+	}
+	
+	
+	private void searchForGroups(){
+		
 	}
 	
 	private boolean search(int i, int j){
