@@ -203,4 +203,14 @@ public class Periphery {
 		return 50;
 	}
 
+	public int searchGroup(){
+		for(int y=0;y<cluster[0].length;y++){
+			for(int x=0;x<cluster.length;x++){
+				if(!Concentration.getElements().containsValue(Concentration.visual[x][y])){
+					return x*100+y;
+				}
+			}
+		}
+		return -1;
+	}
 }

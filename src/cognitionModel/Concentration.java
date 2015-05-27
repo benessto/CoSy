@@ -17,7 +17,7 @@ public class Concentration {
 	private Periphery periphery;
 	private int maxX;
 	private int maxY;
-	private HashMap<Integer, Element> elements;	
+	private static HashMap<Integer, Element> elements;	
 	private HashMap<Integer, Element[]> groups;	
 	private Memory  memory;
 	private Boolean useVisual = true;
@@ -506,6 +506,9 @@ public class Concentration {
 	public void setNumberOfSearched(int numberOfSearched) {
 		this.numberOfSearched = numberOfSearched;
 	}
-	
+
+	public static HashMap<Integer, Element> getElements(){
+		return elements;
+	}
 
 }
