@@ -319,32 +319,23 @@ public class Concentration {
 			//Der Peripherie den aktuellen Cluster geben
 			setCluster(i, j);
 			//ergebniss der peripherie abfragen
-			int hint = periphery.search();
+			int hint = periphery.searchGroup();
 			//wenn etwas gefunden
-			if(hint!=5){
+			if(hint!=-1){
+				int x = (hint-(hint%100))/100;
+				int y = hint%100;
 				//System.out.println("Start searchAround i="+i+", j="+j + ", hint ="+hint);
-				allSearched = searchAround(i, j, hint, 0, 0);
+				allSearched = searchAroundGroups(x, y);
 				
 			//wenn nichts gefunden
-			}else{
-				if(i+3<maxX){
-					//System.out.println("search if(i+3<=maxX)");
-					allSearched = search(i+3,j);
-				}
-				else{
-					if(i+2<maxX){
-						searchThree(i+1, j);
-					}
-					if(j+3<maxY){
-						//System.out.println("search if(j+3<=maxY)");
-						allSearched = search(1, j+3);
-					}else{
-						return true;
-					}
-				}
 			}
 		}
 		return allSearched;
+	}
+	
+	private boolean searchAroundGroups(int x, int y){
+		
+		return false;
 	}
 	
 	private boolean search(int i, int j){
