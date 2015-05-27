@@ -20,10 +20,7 @@ public class VisualRoutines {
 	      Map.Entry<Integer, Element> entry = it.next();
 	      System.out.println(((Element) entry.getValue()).getColorAndForm() + "("+ ((Element) entry.getValue()).getX()+"|"+ ((Element) entry.getValue()).getY()+ "), Connections:" + ((Element) entry.getValue()).getConnections());
 	      if ( ((Element) entry.getValue()).getConnections() < 2 //Remove elements that have less than 2 connections
-	    		  ||((Element) entry.getValue()).getX()>element.getX()+2
-	    		  ||((Element) entry.getValue()).getX()<element.getX()-2
-	    		  ||((Element) entry.getValue()).getY()>element.getY()+2
-	    		  ||((Element) entry.getValue()).getY()<element.getY()-2) { 
+	    		  && cutGroup(entry, element)) { 
 	        it.remove();
 	        System.out.println("Removing: "+((Element) entry.getValue()).getElementAsString() +", connections: "+((Element) entry.getValue()).getConnections());
 	      } else {
@@ -38,6 +35,16 @@ public class VisualRoutines {
 		}
 		
 		return false;
+	}
+	
+	private static boolean cutGroup (Map.Entry<Integer, Element> entry, Element element) {
+		if (Concentration.searchType.equals("Object")) {
+			return ((Element) entry.getValue()).getX()>element.getX()+2
+		    		  ||((Element) entry.getValue()).getX()<element.getX()-2
+		    		  ||((Element) entry.getValue()).getY()>element.getY()+2
+		    		  ||((Element) entry.getValue()).getY()<element.getY()-2;
+		}
+		return true;
 	}
 	
 	private static void FIND_CONNECTION(Element element, char XY, int direction) {
