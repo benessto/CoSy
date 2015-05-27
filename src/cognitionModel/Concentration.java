@@ -23,7 +23,7 @@ public class Concentration {
 	private Boolean useVisual = true;
 	private int sum;
 	private boolean canAnswer = true;
-	private String searchType;
+	public static String searchType;
 	
 	public Concentration() {
 		elements = new HashMap<Integer, Element>();

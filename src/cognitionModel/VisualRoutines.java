@@ -48,7 +48,7 @@ public class VisualRoutines {
 				String[] colorForm = Concentration.visual[element.getX()+direction][element.getY()].split(" ");
 				if (colorForm.length > 1) {
 					Element neighbor = new Element(element.getX()+direction, element.getY(), colorForm[0], colorForm[1]);
-					if(neighbor.getColorAndForm().equals(element.getColorAndForm()) && !GROUP.containsKey(neighbor.getKoordinates())){
+					if(equalsSearchType(element, neighbor) && !GROUP.containsKey(neighbor.getKoordinates())){
 						GROUP.put(neighbor.getKoordinates(), neighbor);
 						GROUP.get(element.getKoordinates()).addConnections();
 						GROUP.get(neighbor.getKoordinates()).addConnections();
@@ -56,7 +56,7 @@ public class VisualRoutines {
 						FIND_CONNECTION(neighbor, 'Y', -1);
 						FIND_CONNECTION(neighbor, 'Y', 1);
 						FIND_CONNECTION(neighbor, 'X', direction);
-					} else if (neighbor.getColorAndForm().equals(element.getColorAndForm())) {
+					} else if (equalsSearchType(element, neighbor)) {
 						GROUP.get(element.getKoordinates()).addConnections();
 						//GROUP.get(neighbor.getKoordinates()).addConnections();
 						System.out.println("Found connection X between"+" Element("+GROUP.get(element.getKoordinates()).getX()+"|"+GROUP.get(element.getKoordinates()).getY()+")"+" and "+GROUP.get(neighbor.getKoordinates()).getX()+"|"+GROUP.get(neighbor.getKoordinates()).getY());
@@ -70,7 +70,7 @@ public class VisualRoutines {
 				String[] colorForm = Concentration.visual[element.getX()][element.getY()+direction].split(" ");
 				if (colorForm.length > 1) {
 					Element neighbor = new Element(element.getX(), element.getY()+direction, colorForm[0], colorForm[1]);
-					if(neighbor.getColorAndForm().equals(element.getColorAndForm())  && !GROUP.containsKey(neighbor.getKoordinates())){
+					if(equalsSearchType(element, neighbor) && !GROUP.containsKey(neighbor.getKoordinates())){
 						GROUP.put(neighbor.getKoordinates(), neighbor);
 						GROUP.get(element.getKoordinates()).addConnections();
 						GROUP.get(neighbor.getKoordinates()).addConnections();
@@ -78,7 +78,7 @@ public class VisualRoutines {
 						FIND_CONNECTION(neighbor, 'X', -1);
 						FIND_CONNECTION(neighbor, 'X', 1);
 						FIND_CONNECTION(neighbor, 'Y', direction);
-					} else if (neighbor.getColorAndForm().equals(element.getColorAndForm())) {
+					} else if (equalsSearchType(element, neighbor)) {
 						GROUP.get(element.getKoordinates()).addConnections();
 						//GROUP.get(neighbor.getKoordinates()).addConnections();
 						System.out.println("Found connection Y between"+" Element("+GROUP.get(element.getKoordinates()).getX()+"|"+GROUP.get(element.getKoordinates()).getY()+")"+" and "+GROUP.get(neighbor.getKoordinates()).getX()+"|"+GROUP.get(neighbor.getKoordinates()).getY());
@@ -89,5 +89,20 @@ public class VisualRoutines {
 	return;
 		//Concentration.printLineSeperator();
 	}
-
+	
+	
+	private static boolean equalsSearchType(Element element, Element neighbor) {
+		if (Concentration.searchType.equals("Object")) {
+			return neighbor.getColorAndForm().equals(element.getColorAndForm());
+		} else if (Concentration.searchType.equals("Colorgroup")) {
+			return neighbor.getColor().equals(element.getColor());
+		} else if (Concentration.searchType.equals("Proximitygroup")) {
+			return true;				
+		} else if (Concentration.searchType.equals("Formgroup")) {
+			return neighbor.getForm().equals(element.getForm());
+		} else if (Concentration.searchType.equals("Allgroups")) {
+			return false;
+		}
+		return false;
+	}
 }
