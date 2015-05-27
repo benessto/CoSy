@@ -309,8 +309,42 @@ public class Concentration {
 	}
 	
 	
-	private void searchForGroups(){
-		
+	private boolean searchForGroups(int i, int j){
+		boolean allSearched = false;
+		if(Clock.getTicks()<=Clock.getMaxTime()){ // Still have time?
+			String[] array = visual[i][j].split(" ");
+			Element element = new Element(i, j, array[0], array[1]);
+			visualRoutine1(i, j, element);
+			
+			//Der Peripherie den aktuellen Cluster geben
+			setCluster(i, j);
+			//ergebniss der peripherie abfragen
+			int hint = periphery.search();
+			//wenn etwas gefunden
+			if(hint!=5){
+				//System.out.println("Start searchAround i="+i+", j="+j + ", hint ="+hint);
+				allSearched = searchAround(i, j, hint, 0, 0);
+				
+			//wenn nichts gefunden
+			}else{
+				if(i+3<maxX){
+					//System.out.println("search if(i+3<=maxX)");
+					allSearched = search(i+3,j);
+				}
+				else{
+					if(i+2<maxX){
+						searchThree(i+1, j);
+					}
+					if(j+3<maxY){
+						//System.out.println("search if(j+3<=maxY)");
+						allSearched = search(1, j+3);
+					}else{
+						return true;
+					}
+				}
+			}
+		}
+		return allSearched;
 	}
 	
 	private boolean search(int i, int j){
