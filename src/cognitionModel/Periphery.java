@@ -1,8 +1,14 @@
 package cognitionModel;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 public class Periphery {
 	private String[][] cluster;
 	private String searchedColor;
+	private HashMap preProcessedVisual;
 
 	public String[][] getCluster() {
 		return cluster;
@@ -19,15 +25,40 @@ public class Periphery {
 	public void setSearchedColor(String searchedColor) {
 		this.searchedColor = searchedColor;
 	}
+	
+	public int getPreProcessing(){
+		preProcessedVisual = new HashMap<Integer, String>();
+		for(int i=0;i<Concentration.visual.length;i++){
+			for(int j=0;j<Concentration.visual[0].length;j++){
+				if(!Concentration.visual[i][j].equals("leer")){
+					preProcessedVisual.put(i*100+j, Concentration.visual[i][j]);
+				}
+			}
+		}
+		int sumX = 0;
+		int sumY= 0;
+		int amount = 0;
+		for(Iterator<Map.Entry<Integer, String>> it = preProcessedVisual.entrySet().iterator(); it.hasNext();){
+			Map.Entry<Integer, String> entry = it.next();
+			sumX = sumX + (entry.getKey()-(entry.getKey()%100));
+			sumY = sumY + entry.getKey()%100;
+			amount++;
+		}
+		sumX = sumX/amount;
+		sumY = sumY/amount;
+		return sumX*100+sumY;
+	}
+	
+	
 	/**
 	 * This method searched for the given color in the given Cluster
 	 * @return die summe der gefundenen richtigfarbigen objekte ein Objekt in der oberen reihe zählt 3 eins in der mittleren 5 und eins in der unteren 7
 	 */
 	public int search(){
 		int found = 0;
-		int oben=0;
-		int unten=0;
-		int equal=0;
+		int oben = 0;
+		int unten = 0;
+		int equal = 0;
 		
 		for(int i=0;i<cluster.length;i++){
 			for(int j=0;j<cluster[0].length;j++){
