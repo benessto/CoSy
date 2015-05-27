@@ -7,14 +7,18 @@ public class Element {
 	private String color;
 	private String form;
 	private int connections = 0;
-	private int groupID = 0;
+	private int colorGroupID = 0;
+	private int proximityGroupID = 0;
+	private int formGroupID = 0;
+	private boolean hidden = false;
 	
-	public Element(int x, int y, String color, String form){
+	public Element(int x, int y, String color, String form, boolean hidden){
 		setX(x);
 		setY(y);
 		setKoordinates(x, y);
 		setColor(color);
 		setForm(form);
+		setHidden(hidden);
 	}
 	
 	public String getColorAndForm() {
@@ -70,15 +74,38 @@ public class Element {
 	}
 
 	public int getGroupID() {
-		return groupID;
+		switch(Concentration.searchType){
+		case "Proximitygroup": return proximityGroupID;
+		case "Colorgroup": return colorGroupID;
+		case "Formgroup": return formGroupID;
+		case "Object" : return proximityGroupID;
+		default: return 0;
+		}
 	}
 
 	public void setGroupID(int groupID) {
-		this.groupID = groupID;
+		switch(Concentration.searchType){
+		case "Proximitygroup": proximityGroupID = groupID;
+			break;
+		case "Colorgroup": colorGroupID = groupID;
+			break;
+		case "Formgroup": formGroupID = groupID;
+			break;
+		case "Object" : proximityGroupID = groupID;
+			break;
+		}
 	}
 	
 	public String getElementAsString() {
 		return color+" "+form+"("+x+"|"+y+")";
+	}
+
+	public boolean isHidden() {
+		return hidden;
+	}
+
+	public void setHidden(boolean hidden) {
+		this.hidden = hidden;
 	}
 
 }

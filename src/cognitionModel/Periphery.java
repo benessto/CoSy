@@ -206,7 +206,7 @@ public class Periphery {
 	public int searchGroup(){
 		for(int y=0;y<cluster[0].length;y++){
 			for(int x=0;x<cluster.length;x++){
-				if(!Concentration.getElements().containsValue(Concentration.visual[x][y])){
+				if(!Concentration.getElements().containsKey(x*100+y)&&!Concentration.visual[x][y].equals("leer")){
 					return x*100+y;
 				}
 			}

@@ -44,13 +44,15 @@ public class Concentration {
 	public void startTask() {
 		elements = new HashMap<Integer, Element>(); // Empty HashMap
 		Clock.resetTicks();
-		if(!memory.hasMemory(task)&&useVisual){
+		if(!memory.hasMemory(task)&&useVisual&&searchType.equals("Object")){
 			search(1,1); // Start search
 			sum = sum + elements.size();
 			printResult(); // Print all found elements in console
 		}else if(memory.hasMemory(task)){
 			sum = sum + memory.getMemory(task);
 			//printResultFromMemory();
+		}else if(useVisual){
+			searchForGroups(1, 1);
 		}else{
 			//printLineSeperator();
 			//System.out.println("I can't answer that, you schould let me see the visual");
@@ -65,10 +67,17 @@ public class Concentration {
 	public void getNewTasks() {
 		Clock.getMaxTimeInput(); //Max time in ticks
 		searchType = getSearchType();
-		String newTask = getTaskInput(); // Get a new task
+		String taskInput;
+		if(searchType.equals("Object")){
+			taskInput = getTaskInput(); // Get a new task
+		}else{
+			taskInput = searchType;
+		}
+		String newTask = taskInput; // Get a new task
 		useVisual = askToUseVisual();
 		sum = 0;
 		splitTasks(newTask);
+		
 	}
 	
 	private void splitTasks (String task) {
@@ -221,7 +230,7 @@ public class Concentration {
 		String[] colorForm = task.split(" ");
 		Element element = null;
 		if (!elements.containsKey(x*100+y)) {
-			element = new Element(x,y, colorForm[0], colorForm[1]);
+			element = new Element(x,y, colorForm[0], colorForm[1], false);
 		} else {
 			element = elements.get(x*100+y);
 		}
@@ -313,8 +322,10 @@ public class Concentration {
 		boolean allSearched = false;
 		if(Clock.getTicks()<=Clock.getMaxTime()){ // Still have time?
 			String[] array = visual[i][j].split(" ");
-			Element element = new Element(i, j, array[0], array[1]);
-			visualRoutine1(i, j, element);
+			if(!array[0].equals("leer")){
+				Element element = new Element(i, j, array[0], array[1], false);
+				visualRoutine1(i, j, element);
+			}
 			
 			//Der Peripherie den aktuellen Cluster geben
 			setCluster(i, j);
@@ -324,7 +335,6 @@ public class Concentration {
 			if(hint!=-1){
 				int x = (hint-(hint%100))/100;
 				int y = hint%100;
-				//System.out.println("Start searchAround i="+i+", j="+j + ", hint ="+hint);
 				allSearched = searchAroundGroups(x, y);
 				
 			//wenn nichts gefunden
@@ -334,8 +344,26 @@ public class Concentration {
 	}
 	
 	private boolean searchAroundGroups(int x, int y){
-		
-		return false;
+		if(Clock.getTicks()<=Clock.getMaxTime()){ // Still have time?
+			String[] array = visual[x][y].split(" ");
+			if(!array[0].equals("leer")){
+			Element element = new Element(x, y, array[0], array[1], false);
+			visualRoutine1(x, y, element);
+			}
+			int hint = periphery.searchGroup();
+			//wenn etwas gefunden
+			if(hint!=-1){
+				int newX = (hint-(hint%100))/100;
+				int newY = hint%100;
+				searchAroundGroups(newX, newY);
+			}
+			if(x+3<visual.length){
+				return searchForGroups(x+3, y);
+			}else if(y+3<visual[0].length){
+				return searchForGroups(1, y+3);
+			}
+		}
+		return true;
 	}
 	
 	private boolean search(int i, int j){
