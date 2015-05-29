@@ -36,6 +36,7 @@ public class Clock {
 		System.out.print("Tell me how much time I have: ");
 		if(scanner.hasNextInt()){
 			input = scanner.nextInt();
+			System.out.println(input);
 			setMaxTime(input);
 			return input;
 			

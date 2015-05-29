@@ -141,7 +141,7 @@ public class Concentration {
 		String input = scanner.nextLine();
 		
 		printLineSeperator();
-		System.out.print("Should I search for an Object, a Colorgroup, a Proximitygroup or a Formgroup?: ");
+		System.out.print("Should I search for an Object, \n a Colorgroup, a Proximitygroup or a Formgroup?: ");
 		if(!input.equals("")){
 			
 			
@@ -159,22 +159,35 @@ public class Concentration {
 	
 	public void printResult() {
 		printLineSeperator();
-		System.out.println("Number of found elements: " + elements.size());
-		System.out.println("Ticks: "+Clock.getTicks()+"/"+Clock.getMaxTime());
-		for (Element element : elements.values()) {
-			System.out.println(((Element) element).getColor() + " " + ((Element) element).getForm() + ", (x)="+((Element) element).getX() + ", (y)=" + ((Element) element).getY());
-		}
-		printLineSeperator();
-		for (Integer groupID : groups.keySet()) {
-			System.out.println("Group ID: " + groupID);
-			//for (Element[] element : groups.values()) {
-				//if (element[0].getGroupID() == groupID) {
-					Element[] elementArr = groups.get(groupID);
-					for (int i = 0; i < elementArr.length && elementArr[i] != null; i++) {
-						System.out.println ("    "+elementArr[i].getColor() + " " + elementArr[i].getForm() + " ,(x)=" + (elementArr[i].getX() + ", (y)=" + elementArr[i].getY()));
-					}
-					//}
-			//}
+		if(searchType.equals("Object")){
+			System.out.println("Number of found elements: " + elements.size());
+			System.out.println("Ticks: "+Clock.getTicks()+"/"+Clock.getMaxTime());
+			for (Element element : elements.values()) {
+				System.out.println(((Element) element).getColor() + " " + ((Element) element).getForm() + ", (x)="+((Element) element).getX() + ", (y)=" + ((Element) element).getY());
+			}
+			printLineSeperator();
+			for (Integer groupID : groups.keySet()) {
+				System.out.println("Group ID: " + groupID);
+				//for (Element[] element : groups.values()) {
+					//if (element[0].getGroupID() == groupID) {
+						Element[] elementArr = groups.get(groupID);
+						for (int i = 0; i < elementArr.length && elementArr[i] != null; i++) {
+							System.out.println ("    "+elementArr[i].getColor() + " " + elementArr[i].getForm() + " ,(x)=" + (elementArr[i].getX() + ", (y)=" + elementArr[i].getY()));
+						}
+						//}
+				//}
+			}
+		} else{
+			printLineSeperator();
+			for (Integer groupID : groups.keySet()) {
+				System.out.println("Group ID: " + groupID);
+				//for (Element[] element : groups.values()) {
+					//if (element[0].getGroupID() == groupID) {
+						Element[] elementArr = groups.get(groupID);
+						for (int i = 0; i < elementArr.length && elementArr[i] != null; i++) {
+							System.out.println ("    "+elementArr[i].getColor() + " " + elementArr[i].getForm() + " ,(x)=" + (elementArr[i].getX() + ", (y)=" + elementArr[i].getY()));
+						}
+			}
 		}
 	}
 	
