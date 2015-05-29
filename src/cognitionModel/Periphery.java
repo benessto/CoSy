@@ -120,8 +120,6 @@ public class Periphery {
 						if(currentObjekt[0].equals(searchedColor)){
 							if(i==0){
 								oben++;
-							}else if(i==1){
-								equal++;
 							}else{
 								unten++;
 							}
@@ -137,8 +135,6 @@ public class Periphery {
 								oben++;
 							}else if(i==1){
 								equal++;
-							}else{
-								unten++;
 							}
 							found++;
 						}
@@ -148,11 +144,7 @@ public class Periphery {
 						String[] currentObjekt = cluster[i][j].split(" ");
 					
 						if(currentObjekt[0].equals(searchedColor)){
-							if(i==0){
-								oben++;
-							}else if(i==1){
-								equal++;
-							}else{
+							if(i>1){
 								unten++;
 							}
 							found++;
@@ -165,10 +157,6 @@ public class Periphery {
 						if(currentObjekt[0].equals(searchedColor)){
 							if(i==0){
 								oben++;
-							}else if(i==1){
-								equal++;
-							}else{
-								unten++;
 							}
 							found++;
 						}
@@ -178,12 +166,8 @@ public class Periphery {
 						String[] currentObjekt = cluster[i][j].split(" ");
 					
 						if(currentObjekt[0].equals(searchedColor)){
-							if(i==0){
-								oben++;
-							}else if(i==1){
+							if(i==1){
 								equal++;
-							}else{
-								unten++;
 							}
 							found++;
 						}

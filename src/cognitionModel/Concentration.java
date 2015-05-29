@@ -447,10 +447,7 @@ public class Concentration {
 				}
 				
 			}
-			
-			if (found > 0) {
 				Clock.addTicks();
-			}
 			
 			
 			int toIgnore=0;
@@ -461,10 +458,10 @@ public class Concentration {
 			}else if(direction==1){
 				toIgnore=4 + rowsTried;
 			}
-			int hint = periphery.searchAround(alreadytried+3);
+			int hint = periphery.searchAround(toIgnore);
 			if(hint!=50){
 //				System.out.println("Ignore: " + toIgnore +" "+ rowsTried);
-				searchAround(i,  j, hint, alreadytried+3, toIgnore+rowsTried);
+				searchAround(i,  j, hint, alreadytried+3, toIgnore);
 			}else{
 				if(i+3<maxX){
 //					System.out.println("searchAround if(i+3<=maxX) " + i + " " + j);
@@ -515,9 +512,7 @@ public class Concentration {
 				}
 			}
 			
-			if (found > 0) {
 				Clock.addTicks();
-			}
 		}
 	}
 	
