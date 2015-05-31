@@ -29,7 +29,7 @@ public class Examiner {
 		String input = scanner.nextLine();
 		
 		Concentration.printLineSeperator();
-		System.out.print("What should I look for?: ");
+		System.out.print("What should Dörte look for?: ");
 		if(!input.equals("")){
 			
 			
@@ -47,7 +47,7 @@ public class Examiner {
 		scanner.reset();
 		
 		Concentration.printLineSeperator();
-		System.out.print("Should I use the visual?(true/false): ");
+		System.out.print("Should Dörte use the visual?(true/false): ");
 		if(scanner.hasNextBoolean()){
 			return scanner.nextBoolean();
 		}
@@ -62,7 +62,7 @@ public class Examiner {
 		String input = scanner.nextLine();
 		
 		Concentration.printLineSeperator();
-		System.out.print("Should I search for an Object, \n a Colorgroup, a Proximitygroup or a Formgroup?: ");
+		System.out.print("Should Dörte search for an Object, \n a Colorgroup, a Proximitygroup or a Formgroup?: ");
 		if(!input.equals("")){
 			
 			

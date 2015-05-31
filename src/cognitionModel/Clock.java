@@ -33,7 +33,7 @@ public class Clock {
 		int input = -1;
 		
 		Concentration.printLineSeperator();
-		System.out.print("Tell me how much time I have: ");
+		System.out.print("Tell me how much time Dörte has: ");
 		if(scanner.hasNextInt()){
 			input = scanner.nextInt();
 			System.out.println(input);
