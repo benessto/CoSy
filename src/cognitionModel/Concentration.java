@@ -54,7 +54,7 @@ public class Concentration {
 			//printResultFromMemory();
 		}else if(useVisual){
 			searchForGroups(1, 1);
-			sum = sum + groups.size();
+			sum = sum + groupID;
 		}else{
 			//printLineSeperator();
 			//System.out.println("I can't answer that, you schould let me see the visual");
