@@ -53,6 +53,7 @@ public class Concentration {
 			//printResultFromMemory();
 		}else if(useVisual){
 			searchForGroups(1, 1);
+			sum = sum + groups.size();
 		}else{
 			//printLineSeperator();
 			//System.out.println("I can't answer that, you schould let me see the visual");
@@ -92,7 +93,7 @@ public class Concentration {
 		}
 		if(canAnswer){
 			printLineSeperator();
-			System.out.println("All in all there are " + sum + " of the searched forms.");
+			System.out.println("All in all there are " + sum  + " " + task + "s.");
 		}else{
 			printLineSeperator();
 			System.out.println("I can't answer that, you should let me see the visual");
