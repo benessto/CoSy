@@ -11,6 +11,8 @@ public class Concentration {
 	public static String[][] visual;
 	public static Scanner SCANNER = new Scanner(System.in); 
 	public static int groupID = 1;
+	public static Boolean useVisual = true;
+	public static String searchType;
 	
 	private int numberOfSearched = 0;
 	private String task;
@@ -20,10 +22,9 @@ public class Concentration {
 	private static HashMap<Integer, Element> elements;	
 	private HashMap<Integer, Element[]> groups;	
 	private Memory  memory;
-	private Boolean useVisual = true;
 	private int sum;
 	private boolean canAnswer = true;
-	public static String searchType;
+	
 	
 	public Concentration() {
 		elements = new HashMap<Integer, Element>();
@@ -60,25 +61,15 @@ public class Concentration {
 			canAnswer = false;
 		}
 		
-		if (Clock.getTicks() <= Clock.getMaxTime() && useVisual){
+		if (Examiner.isTimeUp() && useVisual){
 			memorize();
 		}
 	}
 	
 	public void getNewTasks() {
-		Clock.getMaxTimeInput(); //Max time in ticks
-		searchType = getSearchType();
-		String taskInput;
-		if(searchType.equals("Object")){
-			taskInput = getTaskInput(); // Get a new task
-		}else{
-			taskInput = searchType;
-		}
-		String newTask = taskInput; // Get a new task
-		useVisual = askToUseVisual();
+		String newTask = Examiner.getNewTasks();
 		sum = 0;
 		splitTasks(newTask);
-		
 	}
 	
 	private void splitTasks (String task) {
@@ -103,56 +94,11 @@ public class Concentration {
 	}
 	
 	
-	public Boolean askToUseVisual(){
-		Scanner scanner = SCANNER;
-		scanner.reset();
-		
-		printLineSeperator();
-		System.out.print("Should I use the visual?(true/false): ");
-		if(scanner.hasNextBoolean()){
-			return scanner.nextBoolean();
-		}
-		return true;
-		
-		
-	}
 	
-	public String getTaskInput() {
-		Scanner scanner = SCANNER;
-		scanner.reset();
-		String input = scanner.nextLine();
-		
-		printLineSeperator();
-		System.out.print("What should I look for?: ");
-		if(!input.equals("")){
-			
-			
-			return input;
-		} else if(scanner.hasNextLine()){
-			return scanner.nextLine();
-			//System.out.println("next  line:" + input);
-		}
-		return input;
-		
-	}
 	
-	private String getSearchType(){
-		Scanner scanner = SCANNER;
-		scanner.reset();
-		String input = scanner.nextLine();
-		
-		printLineSeperator();
-		System.out.print("Should I search for an Object, \n a Colorgroup, a Proximitygroup or a Formgroup?: ");
-		if(!input.equals("")){
-			
-			
-			return input;
-		} else if(scanner.hasNextLine()){
-			return scanner.nextLine();
-			//System.out.println("next  line:" + input);
-		}
-		return input;
-	}
+	
+	
+	
 	
 	public String[][] getVisual() {
 		return visual;
@@ -334,7 +280,7 @@ public class Concentration {
 	
 	private boolean searchForGroups(int i, int j){
 		boolean allSearched = false;
-		if(Clock.getTicks()<=Clock.getMaxTime()){ // Still have time?
+		if(Examiner.isTimeUp()){ // Still have time?
 			String[] array = visual[i][j].split(" ");
 			if(!array[0].equals("leer")){
 				Element element = new Element(i, j, array[0], array[1], false);
@@ -358,7 +304,7 @@ public class Concentration {
 	}
 	
 	private boolean searchAroundGroups(int x, int y){
-		if(Clock.getTicks()<=Clock.getMaxTime()){ // Still have time?
+		if(Examiner.isTimeUp()){ // Still have time?
 			String[] array = visual[x][y].split(" ");
 			if(!array[0].equals("leer")){
 			Element element = new Element(x, y, array[0], array[1], false);
@@ -382,7 +328,7 @@ public class Concentration {
 	
 	private boolean search(int i, int j){
 		boolean allSearched = false;
-		if(Clock.getTicks()<=Clock.getMaxTime()){ // Still have time?
+		if(Examiner.isTimeUp()){ // Still have time?
 			//System.out.println("Looking for : " + task + ", Found:  " + visual[i][j] + " at tick " + Clock.getTicks());
 			//befindet sich in dem gegebenen Feld das gesuchte Objekt?
 			if (!elements.containsKey(i*100+j)) {
@@ -425,7 +371,7 @@ public class Concentration {
 	
 	private boolean searchAround(int i, int j, int direction, int alreadytried, int rowsTried){
 		//System.out.println("Start searchAround i="+i+", j="+j + ", hint ="+direction);
-		if(Clock.getTicks()<=Clock.getMaxTime()){
+		if(Examiner.isTimeUp()){
 			int found = 0;
 			
 			if (!elements.containsKey((i+direction)*100+j-1)) {
@@ -488,7 +434,7 @@ public class Concentration {
 	 * @param j y-Koordinate des angegebenen Felds
 	 */
 	private void searchThree(int i, int j){
-		if(Clock.getTicks()<=Clock.getMaxTime()){
+		if(Examiner.isTimeUp()){
 			
 			int found = 0;
 			
