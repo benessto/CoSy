@@ -38,7 +38,11 @@ public class Concentration {
 	}
 	public void memorize(){
 		if(!memory.hasMemory(task)){
+			if(searchType.equals("Object")){
 			memory.memorize(task, elements.size());
+			}else{
+				memory.memorize(task, sum);
+			}
 		}
 	}
 	
