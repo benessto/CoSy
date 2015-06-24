@@ -21,12 +21,14 @@ public class Cognition  {
 		trueSafety = trueSafety * temp;
 	}
 	
-	public void increasePerceivedSafety(){
-		
+	public void increasePerceivedSafety(int percentage){
+		double temp = (percentage + 100) / 100;
+		perceivedSafety = perceivedSafety * temp;
 	}
 	
-	public void decreasePerceivedSafety(){
-		
+	public void decreasePerceivedSafety(int percentage){
+		double temp = percentage / 100;
+		perceivedSafety = perceivedSafety * temp;
 	}
 	public void increaseSpeed(){
 		double G = (initialSpeed-maxSpeed)/100; //höchstwert von speed
