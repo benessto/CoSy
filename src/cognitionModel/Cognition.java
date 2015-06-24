@@ -2,10 +2,14 @@ package cognitionModel;
 
 public class Cognition  {
 	public String[] words;
-	public int delay = 850; // in millisecond
+	public final int delay = 350; // in millisecond
+	public final int initialSpeed = 850;
+	public final int maxSpeed = 600;
+	public int speed = 850;
 	public double trueSafety = 95.00;
 	public double perceivedSafety = 60;
 	public int time;
+	public int combo = 0; //anzahl richtiger elemente in folge
 	
 	public void increaseTrueSafety (int percentage) {
 		double temp = (percentage + 100) / 100;
@@ -24,14 +28,20 @@ public class Cognition  {
 	public void decreasePerceivedSafety(){
 		
 	}
-	
-	public void increaseSpeed(){
+	public void increaseSpeed()){
+		double G = initialSpeed-maxSpeed; //höchstwert von speed
+		double e = 2.71828; //eulersche zahl
+		
+		
+		double sum = G*(1/(1+Math.pow(e, (-0.15*G*combo))*(G/0.1-1)));
+		
 		
 	}
 	
 	public void decreaseSpeed(){
 		
 	}
+	
 	
 	public void setWords (String[] words) {
 		this.words = words;
