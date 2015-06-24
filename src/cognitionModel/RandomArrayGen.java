@@ -52,7 +52,7 @@ public class RandomArrayGen {
 	
 	public String[] getStroop(){
 		Random randominteger = new Random();
-		String[] stroop = new String[10];
+		String[] stroop = new String[30];
 		for(int i = 0; i<stroop.length; i++){
 			String word = stroopColors[randominteger.nextInt(6)];
 			String color = stroopColors[randominteger.nextInt(6)];

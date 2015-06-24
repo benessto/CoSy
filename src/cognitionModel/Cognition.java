@@ -14,6 +14,7 @@ public class Cognition  {
 	public int time;
 	public int combo = 0; //anzahl richtiger elemente in folge
 	private double speedIncreaseRaw = 0;
+	double runtime = 0;
 	
 	public static String again() {
 		Scanner scanner = Concentration.SCANNER;
@@ -35,7 +36,7 @@ public class Cognition  {
 	}
 	
 	public void sight(String[] wordlist){
-		for (int x = 0; x < 10; x++){
+		for (int x = 0; x < wordlist.length; x++){
 			String consciousResult = Consciousness.getColor(wordlist[x]);
 			String subconsciousResult = Subconsciousness.getColor(wordlist[x]);
 			resolveConflict(consciousResult, subconsciousResult);
@@ -78,9 +79,11 @@ public class Cognition  {
 		double G = (double)(initialSpeed-maxSpeed)/100; //höchstwert von speed
 		System.out.println(G);
 		double e = 2.71828; //eulersche zahl
-		
-		
-		double speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*combo))*(G/0.1-1))); //2,5*(1/(1+2,71828^(-0,15*2,5*x)*(2,5/0,1-1))) http://funktion.onlinemathe.de/
+		if(speed>1200){
+			speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*10))*(G/0.1-1)));
+		}else{		
+			speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*combo))*(G/0.1-1))); //2,5*(1/(1+2,71828^(-0,15*2,5*x)*(2,5/0,1-1))) http://funktion.onlinemathe.de/
+		}
 		System.out.println("speedIncrease: " + speedIncreaseRaw);
 		speedIncreaseRaw = speedIncreaseRaw*100;
 		speedIncreaseRaw = speedIncreaseRaw * (perceivedSafety/4+100)/100;
@@ -91,10 +94,13 @@ public class Cognition  {
 	}
 	
 	public void decreaseSpeed(){
-		double speedDecrease = -0.1*Math.pow((double)((speed/100)), 2)+10; // -0,1x^2+10 http://funktion.onlinemathe.de/
+		double speedDecrease = -0.05*Math.pow((double)((speed/100)), 2)+10; // -0,1x^2+10 http://funktion.onlinemathe.de/
 		System.out.println("SPEEDDECREASE: " + speedDecrease + "SPEED: " + speed);
 		speedDecrease = speedDecrease*100;
 		System.out.println("SPEEDDECREASE: " + speedDecrease);
+		if(speedDecrease<0){
+			speedDecrease=0;
+		}
 		speed = speed+(int)speedDecrease;
 	}
 	
@@ -109,12 +115,15 @@ public class Cognition  {
 		if (randomint > trueSafety || speed < maxSpeed){//Error-case
 			System.out.println("I perceived the word " + subcon + ", although its color was " + con + ".");
 			combo = 0;
+			runtime += speed;
+			runtime += delay;
 			decreasePerceivedSafety();
 			decreaseSpeed();
 			
 		} else {//Correct-case
 			System.out.println("I perceived the color of the word, which is " + con + ".");
 			combo++;
+			runtime += speed;
 			increasePerceivedSafety();
 			increaseSpeed();
 			
