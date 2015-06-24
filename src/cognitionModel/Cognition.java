@@ -1,5 +1,7 @@
 package cognitionModel;
 
+import java.util.Random;
+
 public class Cognition  {
 	public String[] words;
 	public final int delay = 350; // in millisecond
@@ -11,14 +13,21 @@ public class Cognition  {
 	public int time;
 	public int combo = 0; //anzahl richtiger elemente in folge
 	
-	public void increaseTrueSafety (int percentage) {
-		double temp = (percentage + 100) / 100;
-		trueSafety = trueSafety * temp;
+	public void sight(String[] wordlist){
+		for (int x = 0; x < 10; x++){
+			String consciousResult = Consciousness.getColor(wordlist[x]);
+			String subconsciousResult = Subconsciousness.getColor(wordlist[x]);
+			resolveConflict(consciousResult, subconsciousResult);
+			increaseTrueSafety();
+		}
+	}	
+	
+	public void increaseTrueSafety () {
+		trueSafety = trueSafety + 0.5;
 	}
 	
-	public void decreaseTrueSafety (int percentage) {
-		double temp = percentage / 100;
-		trueSafety = trueSafety * temp;
+	public void decreaseTrueSafety () {
+		
 	}
 	
 	public void increasePerceivedSafety(int percentage){
@@ -54,8 +63,14 @@ public class Cognition  {
 		this.words = words;
 	}
 	
-	public void resolveConflict () {
-		
+	public void resolveConflict (String con, String subcon) {
+		Random randomGenerator = new Random();
+		int randomint = randomGenerator.nextInt(101);
+		if (randomint > trueSafety || speed > maxSpeed){
+			System.out.println("I'm perceiving the color " + Subconsciousness.getColor(subcon) + ".");
+		} else {
+			System.out.println("I'm perceiving the color " + Consciousness.getColor(con) + ".");
+		}
 	}
 	
 	public boolean rightDecision(){
