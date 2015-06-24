@@ -1,6 +1,6 @@
 package cognitionModel;
 
-public class Stroop {
+public class Cognition  {
 	public String[] words;
 	public int delay = 850; // in millisecond
 	public double readability = 95.00;
