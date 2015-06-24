@@ -1,6 +1,7 @@
 package cognitionModel;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Cognition  {
 	public String[] words;
@@ -14,6 +15,25 @@ public class Cognition  {
 	public int combo = 0; //anzahl richtiger elemente in folge
 	private double speedIncreaseRaw = 0;
 	
+	public static String again() {
+		Scanner scanner = Concentration.SCANNER;
+		scanner.reset();
+		String input = scanner.nextLine();
+		
+		Concentration.printLineSeperator();
+		System.out.print("Should I do it again? ");
+		if(!input.equals("")){
+			
+			
+			return input;
+		} else if(scanner.hasNextLine()){
+			return scanner.nextLine();
+			//System.out.println("next  line:" + input);
+		}
+		return input;
+		
+	}
+	
 	public void sight(String[] wordlist){
 		for (int x = 0; x < 10; x++){
 			String consciousResult = Consciousness.getColor(wordlist[x]);
@@ -25,6 +45,12 @@ public class Cognition  {
 			System.out.println("| TrueSafety: " + trueSafety + "% |" + " PerceivedSafety: " + perceivedSafety + " | Speed: " + (double)speed/1000 + "sec per Element |");
 			System.out.println("---------------------------------------------------------------------------");
 		}
+		String again = again();
+		if(again.equalsIgnoreCase("yes")){
+			RandomArrayGen arrayGen = new RandomArrayGen();
+			String[] wordlist2 = arrayGen.getStroop();
+			sight(wordlist2);
+		}
 	}	
 	
 	public void increaseTrueSafety () {
@@ -34,8 +60,8 @@ public class Cognition  {
 	}
 	
 	public void decreaseTrueSafety () {
-		trueSafety -= speedIncreaseRaw/100;
-		speedIncreaseRaw = 0;
+		double trueSafetyDecrease = 10*(1/(1+Math.pow(2.71828, (-0.15*10*(speed/100)))*(10/0.005-1))); //10*(1/(1+2,71828^(-0,15*10*x)*(10/0,005-1))) 
+		trueSafety = trueSafetyDecrease*10;
 	}
 	
 	public void increasePerceivedSafety(){
