@@ -1,6 +1,6 @@
 package cognitionModel;
 
-public class consciousness {
+public class Consciousness {
 
 	/**
 	 * 

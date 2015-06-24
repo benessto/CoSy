@@ -1,5 +1,5 @@
 package cognitionModel;
 
-public class subconsciousness {
+public class Subconsciousness {
 
 }
