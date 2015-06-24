@@ -37,14 +37,16 @@ public class Cognition  {
 		
 		double speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*combo))*(G/0.1-1))); //2,5*(1/(1+2,71828^(-0,15*2,5*x)*(2,5/0,1-1))) http://funktion.onlinemathe.de/
 		speedIncreaseRaw = speedIncreaseRaw*100;
-		speed += speedIncreaseRaw * (perceivedSafety/4+100)/100;
+		speed -= speedIncreaseRaw * (perceivedSafety/4+100)/100;
 		
 		
 		
 	}
 	
 	public void decreaseSpeed(){
-		
+		double speedDecrease = Math.pow((double)(-0.1*speed), 2+10); // -0,1x^2+10 http://funktion.onlinemathe.de/
+		speedDecrease = speedDecrease*100;
+		speed = speed+(int)speedDecrease;
 	}
 	
 	
