@@ -12,13 +12,16 @@ public class Cognition  {
 	public double perceivedSafety = 60;
 	public int time;
 	public int combo = 0; //anzahl richtiger elemente in folge
+	private double speedIncreaseRaw = 0;
 	
 	public void sight(String[] wordlist){
 		for (int x = 0; x < 10; x++){
 			String consciousResult = Consciousness.getColor(wordlist[x]);
 			String subconsciousResult = Subconsciousness.getColor(wordlist[x]);
 			resolveConflict(consciousResult, subconsciousResult);
+			increaseSpeed();
 			increaseTrueSafety();
+			decreaseTrueSafety();
 		}
 	}	
 	
@@ -27,7 +30,7 @@ public class Cognition  {
 	}
 	
 	public void decreaseTrueSafety () {
-		
+		trueSafety -= speedIncreaseRaw/1000;
 	}
 	
 	public void increasePerceivedSafety(int percentage){
@@ -46,7 +49,8 @@ public class Cognition  {
 		
 		double speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*combo))*(G/0.1-1))); //2,5*(1/(1+2,71828^(-0,15*2,5*x)*(2,5/0,1-1))) http://funktion.onlinemathe.de/
 		speedIncreaseRaw = speedIncreaseRaw*100;
-		speed -= speedIncreaseRaw * (perceivedSafety/4+100)/100;
+		speedIncreaseRaw = speedIncreaseRaw * (perceivedSafety/4+100)/100;
+		speed -= speedIncreaseRaw;
 		
 		
 		
