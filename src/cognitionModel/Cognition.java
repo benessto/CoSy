@@ -19,28 +19,29 @@ public class Cognition  {
 			String consciousResult = Consciousness.getColor(wordlist[x]);
 			String subconsciousResult = Subconsciousness.getColor(wordlist[x]);
 			resolveConflict(consciousResult, subconsciousResult);
-			increaseSpeed();
 			increaseTrueSafety();
 			decreaseTrueSafety();
+			System.out.println("TrueSafety: " + trueSafety + " PerceivedSafety: " + perceivedSafety + "Speed: " + speed);
 		}
 	}	
 	
 	public void increaseTrueSafety () {
-		trueSafety = trueSafety + 0.5;
+		trueSafety += 0.5;
 	}
 	
 	public void decreaseTrueSafety () {
 		trueSafety -= speedIncreaseRaw/1000;
 	}
 	
-	public void increasePerceivedSafety(int percentage){
-		double temp = (percentage + 100) / 100;
-		perceivedSafety = perceivedSafety * temp;
+	public void increasePerceivedSafety(){
+		if(perceivedSafety < 98){
+			perceivedSafety += 1.5;
+		}
 	}
 	
-	public void decreasePerceivedSafety(int percentage){
-		double temp = percentage / 100;
-		perceivedSafety = perceivedSafety * temp;
+	public void decreasePerceivedSafety(){
+			perceivedSafety = perceivedSafety / 2;
+			
 	}
 	public void increaseSpeed(){
 		double G = (initialSpeed-maxSpeed)/100; //höchstwert von speed
@@ -70,10 +71,18 @@ public class Cognition  {
 	public void resolveConflict (String con, String subcon) {
 		Random randomGenerator = new Random();
 		int randomint = randomGenerator.nextInt(101);
-		if (randomint > trueSafety || speed > maxSpeed){
+		if (randomint > trueSafety || speed > maxSpeed){//Error-case
 			System.out.println("I'm perceiving the color " + Subconsciousness.getColor(subcon) + ".");
-		} else {
+			combo = 0;
+			decreasePerceivedSafety();
+			decreaseSpeed();
+			
+		} else {//Correct-case
 			System.out.println("I'm perceiving the color " + Consciousness.getColor(con) + ".");
+			combo++;
+			increasePerceivedSafety();
+			increaseSpeed();
+			
 		}
 	}
 	
