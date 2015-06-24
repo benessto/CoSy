@@ -21,7 +21,9 @@ public class Cognition  {
 			resolveConflict(consciousResult, subconsciousResult);
 			increaseTrueSafety();
 			decreaseTrueSafety();
-			System.out.println("TrueSafety: " + trueSafety + " PerceivedSafety: " + perceivedSafety + "Speed: " + speed);
+			System.out.println("---------------------------------------------------------------------------");
+			System.out.println("| TrueSafety: " + trueSafety + "% |" + " PerceivedSafety: " + perceivedSafety + " | Speed: " + (double)speed/1000 + "sec per Element |");
+			System.out.println("---------------------------------------------------------------------------");
 		}
 	}	
 	
@@ -79,13 +81,13 @@ public class Cognition  {
 		Random randomGenerator = new Random();
 		int randomint = randomGenerator.nextInt(101);
 		if (randomint > trueSafety || speed < maxSpeed){//Error-case
-			System.out.println("I'm perceiving the color " + subcon + ".");
+			System.out.println("I perceived the word " + subcon + ", although its color was " + con + ".");
 			combo = 0;
 			decreasePerceivedSafety();
 			decreaseSpeed();
 			
 		} else {//Correct-case
-			System.out.println("I'm perceiving the color " + con + ".");
+			System.out.println("I perceived the color of the word, which is " + con + ".");
 			combo++;
 			increasePerceivedSafety();
 			increaseSpeed();
