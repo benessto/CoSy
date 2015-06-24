@@ -14,8 +14,12 @@ public class Main {
 		if(scanner.hasNextInt()){
 			input = scanner.nextInt();			
 		}**/
-		Concentration con = new Concentration();
-		con.getNewTasks();
+		//Concentration con = new Concentration();
+		//con.getNewTasks();
+		RandomArrayGen arrayGen = new RandomArrayGen();
+		String[] wordlist = arrayGen.getStroop();
+		Cognition cognition = new Cognition();
+		cognition.sight(wordlist);
 	}
 
 }

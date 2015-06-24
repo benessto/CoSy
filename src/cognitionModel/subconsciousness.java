@@ -8,6 +8,7 @@ public class Subconsciousness {
 	 * @return the color of the given word.
 	 */
 	public static String getColor(String word){
+		System.out.println("subcon: " + word);
 		String[] wordAndColor = word.split(", ");
 		return wordAndColor[1];
 

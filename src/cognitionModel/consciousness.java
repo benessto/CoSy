@@ -8,8 +8,9 @@ public class Consciousness {
 	 * @return the color of the given word.
 	 */
 	public static String getColor(String word){
+		System.out.println("con: " + word);
 		String[] wordAndColor = word.split(", ");
-		return wordAndColor[2];
+		return wordAndColor[0];
 
 	}
 }

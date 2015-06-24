@@ -26,11 +26,14 @@ public class Cognition  {
 	}	
 	
 	public void increaseTrueSafety () {
-		trueSafety += 0.5;
+		if(trueSafety < 98){
+			trueSafety += 0.5;
+		}
 	}
 	
 	public void decreaseTrueSafety () {
-		trueSafety -= speedIncreaseRaw/1000;
+		trueSafety -= speedIncreaseRaw/100;
+		speedIncreaseRaw = 0;
 	}
 	
 	public void increasePerceivedSafety(){
@@ -44,11 +47,13 @@ public class Cognition  {
 			
 	}
 	public void increaseSpeed(){
-		double G = (initialSpeed-maxSpeed)/100; //höchstwert von speed
+		double G = (double)(initialSpeed-maxSpeed)/100; //höchstwert von speed
+		System.out.println(G);
 		double e = 2.71828; //eulersche zahl
 		
 		
 		double speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*combo))*(G/0.1-1))); //2,5*(1/(1+2,71828^(-0,15*2,5*x)*(2,5/0,1-1))) http://funktion.onlinemathe.de/
+		System.out.println("speedIncrease: " + speedIncreaseRaw);
 		speedIncreaseRaw = speedIncreaseRaw*100;
 		speedIncreaseRaw = speedIncreaseRaw * (perceivedSafety/4+100)/100;
 		speed -= speedIncreaseRaw;
@@ -58,8 +63,10 @@ public class Cognition  {
 	}
 	
 	public void decreaseSpeed(){
-		double speedDecrease = Math.pow((double)(-0.1*speed), 2+10); // -0,1x^2+10 http://funktion.onlinemathe.de/
+		double speedDecrease = -0.1*Math.pow((double)((speed/100)), 2)+10; // -0,1x^2+10 http://funktion.onlinemathe.de/
+		System.out.println("SPEEDDECREASE: " + speedDecrease + "SPEED: " + speed);
 		speedDecrease = speedDecrease*100;
+		System.out.println("SPEEDDECREASE: " + speedDecrease);
 		speed = speed+(int)speedDecrease;
 	}
 	
@@ -71,14 +78,14 @@ public class Cognition  {
 	public void resolveConflict (String con, String subcon) {
 		Random randomGenerator = new Random();
 		int randomint = randomGenerator.nextInt(101);
-		if (randomint > trueSafety || speed > maxSpeed){//Error-case
-			System.out.println("I'm perceiving the color " + Subconsciousness.getColor(subcon) + ".");
+		if (randomint > trueSafety || speed < maxSpeed){//Error-case
+			System.out.println("I'm perceiving the color " + subcon + ".");
 			combo = 0;
 			decreasePerceivedSafety();
 			decreaseSpeed();
 			
 		} else {//Correct-case
-			System.out.println("I'm perceiving the color " + Consciousness.getColor(con) + ".");
+			System.out.println("I'm perceiving the color " + con + ".");
 			combo++;
 			increasePerceivedSafety();
 			increaseSpeed();

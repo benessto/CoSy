@@ -43,10 +43,26 @@ public class RandomArrayGen {
 		{"leer", "leer", "leer", "Blue Square", "Green Polygon", "Blue Square", "Red Square", "leer", "leer", "leer", "Red Square", "Blue Square", "Green Polygon"},
 		{"leer", "leer", "leer", "Yellow Triangle", "Blue Polygon", "Red Polygon", "leer", "leer", "leer", "leer", "leer", "Red Polygon", "Blue Polygon"}
 	};
+	private static String[] stroopColors = {"Red", "Blue", "Green", "Yellow", "Orange", "Pink"};
 	
 	public String IntegerToString(int a){
 		String word = translate[a];
 		return word;
+	}
+	
+	public String[] getStroop(){
+		Random randominteger = new Random();
+		String[] stroop = new String[10];
+		for(int i = 0; i<stroop.length; i++){
+			String word = stroopColors[randominteger.nextInt(6)];
+			String color = stroopColors[randominteger.nextInt(6)];
+			while(color==word){
+				color = stroopColors[randominteger.nextInt(6)];
+			}
+			stroop[i] = color + ", " + word;
+			System.out.println(stroop[i]);
+		}
+		return stroop;
 	}
 	
 	public String[][] RandomIntegerArray(){
