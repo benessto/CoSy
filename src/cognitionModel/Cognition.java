@@ -42,9 +42,9 @@ public class Cognition  {
 			resolveConflict(consciousResult, subconsciousResult);
 			increaseTrueSafety();
 			decreaseTrueSafety();
-			System.out.println("---------------------------------------------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------------");
 			System.out.println("| TrueSafety: " + trueSafety + "% |" + " PerceivedSafety: " + perceivedSafety + " | Speed: " + (double)speed/1000 + "sec per Element |");
-			System.out.println("---------------------------------------------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------------");
 		}
 		String again = again();
 		if(again.equalsIgnoreCase("yes")){
@@ -61,7 +61,8 @@ public class Cognition  {
 	}
 	
 	public void decreaseTrueSafety () {
-		double trueSafetyDecrease = 10*(1/(1+Math.pow(2.71828, (-0.15*10*(speed/100)))*(10/0.005-1))); //10*(1/(1+2,71828^(-0,15*10*x)*(10/0,005-1))) 
+		double trueSafetyDecrease = 10*(1/(1+Math.pow(2.71828, (-0.155*10*(speed/100)))*(10/0.005-1))); //10*(1/(1+2,71828^(-0,15*10*x)*(10/0,005-1))) 
+		System.out.println("trueSafetyDecrease: "+trueSafetyDecrease);
 		trueSafety = trueSafetyDecrease*10;
 	}
 	
@@ -77,20 +78,22 @@ public class Cognition  {
 	}
 	public void increaseSpeed(){
 		double G = (double)(initialSpeed-maxSpeed)/100; //höchstwert von speed
-		System.out.println(G);
 		double e = 2.71828; //eulersche zahl
 		if(speed>1200){
 			speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*10))*(G/0.1-1)));
 		}else{		
-			speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*combo))*(G/0.1-1))); //2,5*(1/(1+2,71828^(-0,15*2,5*x)*(2,5/0,1-1))) http://funktion.onlinemathe.de/
+			speedIncreaseRaw = G*(1/(1+Math.pow(e, (-0.15*G*combo))*(G/0.1-1))); //2,5*(1/(1+2,71828^(-0,155*2,5*x)*(2,5/0,1-1))) http://funktion.onlinemathe.de/
 		}
-		System.out.println("speedIncrease: " + speedIncreaseRaw);
+		//System.out.println("speedIncrease: " + speedIncreaseRaw);
 		speedIncreaseRaw = speedIncreaseRaw*100;
 		speedIncreaseRaw = speedIncreaseRaw * (perceivedSafety/4+100)/100;
-		speed -= speedIncreaseRaw;
+		if (speed <= initialSpeed) { // Set speed to the value according to the function f(speed)
+			speed = initialSpeed - (int) speedIncreaseRaw;
+		} else { // Increase the speed depending on the combo
+			speed -= speedIncreaseRaw;
+		}
 		
-		
-		
+		if (speed < maxSpeed) speed = maxSpeed;
 	}
 	
 	public void decreaseSpeed(){
