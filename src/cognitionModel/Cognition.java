@@ -105,7 +105,7 @@ public class Cognition  {
 	}
 	
 	public void decreaseSpeed(){
-		double speedDecrease = -0.05*Math.pow((double)((speed/100)), 2)+10; // -0,1x^2+10 http://funktion.onlinemathe.de/
+		double speedDecrease = -0.05*Math.pow((double)((speed/100)), 2)+10; // -0,05x^2+10 http://funktion.onlinemathe.de/
 		//System.out.println("SPEEDDECREASE: " + speedDecrease + "SPEED: " + speed);
 		speedDecrease = speedDecrease*100;
 		//System.out.println("SPEEDDECREASE: " + speedDecrease);
