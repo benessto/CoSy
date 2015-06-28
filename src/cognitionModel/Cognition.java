@@ -1,5 +1,6 @@
 package cognitionModel;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,6 +16,12 @@ public class Cognition  {
 	public int combo = 0; //anzahl richtiger elemente in folge
 	private double speedIncreaseRaw = 0;
 	double runtime = 0;
+	
+	public static String format (double d) {
+		DecimalFormat df2 = new DecimalFormat("##.##");
+		
+		return df2.format(d);
+	}
 	
 	public static String again() {
 		Scanner scanner = Concentration.SCANNER;
@@ -40,11 +47,18 @@ public class Cognition  {
 			String consciousResult = Consciousness.getColor(wordlist[x]);
 			String subconsciousResult = Subconsciousness.getColor(wordlist[x]);
 			resolveConflict(consciousResult, subconsciousResult);
-			increaseTrueSafety();
-			decreaseTrueSafety();
-			System.out.println("------------------------------------------------------------------------------------------");
-			System.out.println("| TrueSafety: " + trueSafety + "% |" + " PerceivedSafety: " + perceivedSafety + " | Speed: " + (double)speed/1000 + "sec per Element |");
-			System.out.println("------------------------------------------------------------------------------------------");
+			setTrueSafety();
+			
+			String output =  "| TrueSafety: " + format(trueSafety) + "% |" + " PerceivedSafety: " + format(perceivedSafety) + " | Speed: " + format((double)speed/1000) + "sec per Element |";
+			String seperator = "";
+			for (int i = 0; i < output.length(); i++) {
+				seperator += "-";
+			}
+			
+			
+			System.out.println(seperator);
+			System.out.println(output);
+			System.out.println(seperator);
 		}
 		String again = again();
 		if(again.equalsIgnoreCase("yes")){
@@ -54,15 +68,9 @@ public class Cognition  {
 		}
 	}	
 	
-	public void increaseTrueSafety () {
-		if(trueSafety < 98){
-			trueSafety += 0.5;
-		}
-	}
-	
-	public void decreaseTrueSafety () {
-		double trueSafetyDecrease = 10*(1/(1+Math.pow(2.71828, (-0.155*10*(speed/100)))*(10/0.005-1))); //10*(1/(1+2,71828^(-0,15*10*x)*(10/0,005-1))) 
-		System.out.println("trueSafetyDecrease: "+trueSafetyDecrease);
+	public void setTrueSafety () {
+		double trueSafetyDecrease = 9.8*(1/(1+Math.pow(2.71828, (-0.16*9.8*(speed/100)))*(9.8/0.005-1))); //9,8*(1/(1+2,71828^(-0,16*9,8*x)*(9,8/0,005-1)))  
+		//System.out.println("trueSafetyDecrease: "+trueSafetyDecrease);
 		trueSafety = trueSafetyDecrease*10;
 	}
 	
@@ -98,9 +106,9 @@ public class Cognition  {
 	
 	public void decreaseSpeed(){
 		double speedDecrease = -0.05*Math.pow((double)((speed/100)), 2)+10; // -0,1x^2+10 http://funktion.onlinemathe.de/
-		System.out.println("SPEEDDECREASE: " + speedDecrease + "SPEED: " + speed);
+		//System.out.println("SPEEDDECREASE: " + speedDecrease + "SPEED: " + speed);
 		speedDecrease = speedDecrease*100;
-		System.out.println("SPEEDDECREASE: " + speedDecrease);
+		//System.out.println("SPEEDDECREASE: " + speedDecrease);
 		if(speedDecrease<0){
 			speedDecrease=0;
 		}
