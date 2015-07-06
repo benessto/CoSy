@@ -1,9 +1,11 @@
 package cognitionModel;
 
+import java.util.HashMap;
+
 public class Metaknowledge {
-	private String[][] data = {{}};
+	private HashMap<String, String[]> data = new HashMap<String, String[]>();
 	
-	public String[][] getData() {
+	public HashMap getData() {
 		return data;
 	}
 }
