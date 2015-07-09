@@ -6,7 +6,10 @@ public class Human {
 	private MidMemory midMem;
 	private int affectionMax;
 	
-	public boolean answer(String question){
+	public boolean answer(Question question){
+		// Get Question
+		// Think about question (process memory)
+		// Give an answer
 		
 		return true;
 	}

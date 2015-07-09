@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		Metaknowledge.printlenght();
+		Examiner ex = new Examiner();
+		ex.prepareQuestions();
+		ex.printTest();
 	}
 
 }
