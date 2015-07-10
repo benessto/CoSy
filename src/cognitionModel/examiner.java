@@ -4,8 +4,13 @@ import java.util.Random;
 
 public class Examiner {
 	private final int TEST_SIZE = 100;
+	private Human human;
 
  	private Question[] test = new Question[TEST_SIZE];
+ 	
+ 	public Examiner(Human human){
+ 		this.human = human;
+ 	}
  	
 	public void prepareQuestions() {
 		for (int i = 0; i < TEST_SIZE; i++) {
@@ -24,7 +29,9 @@ public class Examiner {
 	}
 	
 	public void askQuestions(){
-		
+		for(int i = 0; i<test.length; i++){
+			human.answer(test[i]);
+		}
 	}
 	
 	public void printTest() {

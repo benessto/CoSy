@@ -17,7 +17,7 @@ public class Experiment {
 	}
 	
 	private Examiner createExaminer(){
-		examiner = new Examiner();
+		examiner = new Examiner(human);
 		return examiner;
 	}
 }
