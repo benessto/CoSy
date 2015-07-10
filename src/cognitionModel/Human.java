@@ -1,5 +1,7 @@
 package cognitionModel;
 
+import java.util.Random;
+
 public class Human {
 	private final int AFFECTION_MAX = 20000;
 	
@@ -77,7 +79,9 @@ public class Human {
 	}
 	
 	public void processMid(MemoryConcept memory) {
-		if(memory.getExpertise()>50){
+		Random random = new Random();
+		int pers = random.nextInt(101);
+		if(memory.getExpertise()>pers){
 			midMem.memorize(memory);
 		}
 	}
