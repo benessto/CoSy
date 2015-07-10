@@ -19,7 +19,7 @@ public class Examiner {
  	
 	public void prepareQuestions() {
 		for (int i = 0; i < TEST_SIZE; i++) {
-			int r = new Random().nextInt(3);
+			int r = new Random().nextInt(4);
 			switch (r) {
 			case 0:
 				test[i] = getLowerCaseQuestion();
@@ -29,6 +29,10 @@ public class Examiner {
 				break;
 			case 2:
 				test[i] = askForCategory();
+				break;
+			case 3:
+				test[i] = askForCategory();
+				break;
 			}
 		}
 		for(int j =0; j<150; j++){
@@ -53,7 +57,7 @@ public class Examiner {
 	
 	private void evaluateAnswer(String word, Boolean answer){
 		for(int i = 0; i < test.length; i++){
-			if(test[i].getWord().equals(word)){
+			if(test[i].getWord().equalsIgnoreCase(word)){
 				if(answer){
 					if(test[i].getQuestionType()=="category"){
 						correctCat++;
@@ -61,9 +65,9 @@ public class Examiner {
 						correctCase++;
 					}
 					correctAnswers++;
-					break;
+					return;
 				} else {
-					break;
+					return;
 				}
 			}
 		}

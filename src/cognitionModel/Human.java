@@ -70,8 +70,9 @@ public class Human {
 	}
 	
 	public void processMid(MemoryConcept memory) {
-			//To-Do: Threshold
-		midMem.memorize(memory);
+		if(memory.getExpertise()>12){
+			midMem.memorize(memory);
+		}
 	}
 	
 	public void processLong() {
