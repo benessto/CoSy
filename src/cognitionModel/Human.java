@@ -34,14 +34,17 @@ public class Human {
 		
 		if (question.getQuestionType() == "upper" || question.getQuestionType() == "lower" ){
 			expertise = expertise + 10;
+			System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + expertise + "." );
 			word.setExpertise(expertise);
 		}	else {
 			if (question.getAnswer() == "yes"){
 				catassociate = catassociate + 30;
 				expertise = expertise + 10 * ((connectionassociate+catassociate)/100)+1;
+				System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + expertise + "." );
 				word.setExpertise(expertise);
 			} else {
 				expertise = expertise + 10 * ((connectionassociate+catassociate)/100)+1;
+				System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + expertise + "." );
 				word.setExpertise(expertise);
 				}
 		}
