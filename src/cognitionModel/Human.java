@@ -11,25 +11,34 @@ public class Human {
 	public Human() {
 		affection = AFFECTION_MAX;
 		longMem = new LongMemory(affection);
+
 	}
 	
 	public boolean answer(Question question){
-		// Get Question
 		// Think about question (process memory)
-		// Give an answer
+		MemoryConcept word = longMem.getMemoryConcept(question.getWord());
+		String answer = "yes";
+		putInShort(word);
+		associate(question, word);
+		processMid();
+		printAnswer(answer);
 		
 		return true;
 	}
 	
-	public void processShort() {
-		
+	public void putInShort(MemoryConcept memory) {
+		shortMem.memorize(memory);
 	}
 	
-	public void processMid() {
-			
-		}
+	public void processMid(MemoryConcept memory) {
+			//To-Do: Threshold
+		midMem.memorize(memory);
+	}
 	
 	public void processLong() {
 		
+	}
+	public void printAnswer(String answer){
+		System.out.println(answer);
 	}
 }
