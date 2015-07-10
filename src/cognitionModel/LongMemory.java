@@ -25,9 +25,8 @@ public class LongMemory {
 				
 				MemoryConcept memCon = new MemoryConcept(entry.getValue()[j], entry.getKey(), 0, 0);
 				memory[i] = memCon;
+				i++;
 			}
-			
-			i++;
 		}
 		
 		
@@ -38,6 +37,7 @@ public class LongMemory {
 
 		for (int i = 0; i < memory.length; i++) {
 			if (affection > 0) {
+				System.out.println(i);
 				if (affection > 150) {
 					int pers = random.nextInt(201);
 					pers = pers % 150;
@@ -63,7 +63,7 @@ public class LongMemory {
 	
 	public MemoryConcept getMemoryConcept(String word) {
 		for (int i = 0; i < memory.length; i++) {
-			if (memory[i].getWord().equals(word)) {
+			if (memory[i].getWord().equalsIgnoreCase(word)) {
 				return memory[i];
 			}
 		}

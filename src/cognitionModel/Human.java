@@ -11,11 +11,14 @@ public class Human {
 	public Human() {
 		affection = AFFECTION_MAX;
 		longMem = new LongMemory(affection);
+		shortMem = new ShortMemory();
+		midMem = new MidMemory();
 
 	}
 	
 	public boolean answer(Question question){
 		// Think about question (process memory)
+		System.out.println(question.getQuestion());
 		MemoryConcept word = longMem.getMemoryConcept(question.getWord());
 		String answer = "yes";
 		memorizeInShort(word);

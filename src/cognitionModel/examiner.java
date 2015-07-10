@@ -7,6 +7,8 @@ public class Examiner {
 	private final int TEST_SIZE = 100;
 	private Human human;
 	private int correctAnswers = 0;
+	private int correctCat = 0;
+	private int correctCase = 0;
 
  	private Question[] test = new Question[TEST_SIZE];
  	private ArrayList<String> memoryTest = new ArrayList<String>();
@@ -44,12 +46,20 @@ public class Examiner {
 		for(String word : memoryTest){
 			evaluateAnswer(word, human.answerToMemoryTest(word));
 		}
+		System.out.println("Correct answers: " + correctAnswers + ".");
+		System.out.println("Correct category answers: " + correctCat + ".");
+		System.out.println("Correct case answers: " + correctCase + ".");
 	}
 	
 	private void evaluateAnswer(String word, Boolean answer){
 		for(int i = 0; i < test.length; i++){
 			if(test[i].getWord().equals(word)){
 				if(answer){
+					if(test[i].getQuestionType()=="category"){
+						correctCat++;
+					}else{
+						correctCase++;
+					}
 					correctAnswers++;
 					break;
 				} else {
