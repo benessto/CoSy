@@ -77,7 +77,7 @@ public class Human {
 	}
 	
 	public void processMid(MemoryConcept memory) {
-		if(memory.getExpertise()>12){
+		if(memory.getExpertise()>50){
 			midMem.memorize(memory);
 		}
 	}

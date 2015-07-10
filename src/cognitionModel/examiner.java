@@ -71,9 +71,9 @@ public class Examiner {
 				}
 			}
 		}
-		if(!answer){
-			correctAnswers++;
-		}
+		//if(!answer){
+			//correctAnswers++;
+		//}
 	}
 	
 	public void askQuestions(){
