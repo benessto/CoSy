@@ -19,7 +19,7 @@ public class ShortMemory {
 	
 	public Boolean contains(String word){
 		for(int i = 0; i<buffer.length; i++){
-			if(buffer[i].equals(word)){
+			if(buffer[i].getWord().equals(word)){
 				return true;
 			}
 		}
