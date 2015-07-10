@@ -44,23 +44,30 @@ public class Human {
 
 		
 		int expertise = word.getExpertise();
-		int catassociate = 10;
-		int connectionassociate = word.getFamilarity()/5; 
+		double expbonus = 0;
+		double catassociate = 10;
+		double connectionassociate = word.getFamilarity(); 
 		
 		if (question.getQuestionType() == "upper" || question.getQuestionType() == "lower" ){
-			expertise = expertise + 10;
-			System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + expertise + "." );
-			word.setExpertise(expertise);
+			expbonus = expbonus + 10;
+			System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
+			word.setExpertise(expertise+(int)expbonus);
+			
 		}	else {
 			if (question.getAnswer() == "yes"){
 				catassociate = catassociate + 30;
-				expertise = expertise + 10 * ((connectionassociate+catassociate)/100)+1;
-				System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + expertise + "." );
-				word.setExpertise(expertise);
+				double test = ((((connectionassociate/2)+catassociate)/100)+1);
+				System.out.println("|| Familarity: " + connectionassociate + " || Categoryassociation: " + catassociate + " || Multiplicator: " + test + " ||");
+				expbonus = expbonus + (30 * ((((connectionassociate/2)+catassociate)/100)+1));
+				System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
+				word.setExpertise(expertise+(int)expbonus);
+				
 			} else {
-				expertise = expertise + 10 * ((connectionassociate+catassociate)/100)+1;
-				System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + expertise + "." );
-				word.setExpertise(expertise);
+				double test = ((((connectionassociate/2)+catassociate)/100)+1);
+				System.out.println("|| Familarity: " + connectionassociate + " || Categoryassociation: " + catassociate + " || Multiplicator: " + test + " ||");
+				expbonus = expbonus + (30 * ((((connectionassociate/2)+catassociate)/100)+1));
+				System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
+				word.setExpertise(expertise+(int)expbonus);
 				}
 		}
 	}
@@ -79,6 +86,7 @@ public class Human {
 		
 	}
 	public void printAnswer(String answer){
-		System.out.println(answer);
+		System.out.println("My Answer is: " + answer + "\n");
+		
 	}
 }
