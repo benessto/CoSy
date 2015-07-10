@@ -23,6 +23,10 @@ public class Examiner {
 		}
 	}
 	
+	public void askQuestions(){
+		
+	}
+	
 	public void printTest() {
 		for (int i = 0; i < test.length; i++) {
 			System.out.println(i+1+". "+test[i].getQuestion());
