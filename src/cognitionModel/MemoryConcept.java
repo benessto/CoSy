@@ -3,6 +3,7 @@ package cognitionModel;
 public class MemoryConcept {
 	private String word;
 	private String category;
+	private int expertise;
 	private int familarity;
 	private int personalMemory;
 	
@@ -67,6 +68,20 @@ public class MemoryConcept {
 	 */
 	public void setPersonalMemory(int personalMemory) {
 		this.personalMemory = personalMemory;
+	}
+
+	/**
+	 * @return the expertise
+	 */
+	public int getExpertise() {
+		return expertise;
+	}
+
+	/**
+	 * @param expertise the expertise to set
+	 */
+	public void setExpertise(int expertise) {
+		this.expertise = expertise;
 	}
 	
 	
