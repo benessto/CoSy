@@ -15,7 +15,7 @@ public class Human {
 		MemoryConcept word = longMem.getMemoryConcept(question.getWord();
 		String answer = "yes";
 		putInShort(word);
-		associate();
+		associate(question, word);
 		processMid();
 		printAnswer(answer);
 		
@@ -26,14 +26,15 @@ public class Human {
 		shortMem.memorize(memory);
 	}
 	
-	public void processMid() {
-			
-		}
+	public void processMid(MemoryConcept memory) {
+			//To-Do: Threshold
+		midMem.memorize(memory);
+	}
 	
 	public void processLong() {
 		
 	}
-	public void printAnswer(){
-		System.out.println("");
+	public void printAnswer(String answer){
+		System.out.println(answer);
 	}
 }
