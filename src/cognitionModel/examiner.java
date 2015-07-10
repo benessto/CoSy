@@ -26,12 +26,13 @@ public class Examiner {
 	public void printTest() {
 		for (int i = 0; i < test.length; i++) {
 			System.out.println(i+1+". "+test[i].getQuestion());
+			System.out.println(i+1+". "+test[i].getAnswer());
 		}
 	}
 	
 	public Question getLowerCaseQuestion() {
 		Question question = new Question();
-		String q1 = "[L] Is the word ";
+		String q1 = "Is the word ";
 		String q2 = " written in lower case?";
 		String word = Metaknowledge.getRandomWord().toLowerCase();
 		
@@ -44,7 +45,7 @@ public class Examiner {
 	
 	public Question getUpperCaseQuestion() {
 		Question question = new Question();
-		String q1 = "[U] Is the word ";
+		String q1 = "Is the word ";
 		String q2 = " written in upper case?";
 		String word = Metaknowledge.getRandomWord().toUpperCase();
 		
@@ -59,43 +60,40 @@ public class Examiner {
 		Question question = new Question();
 		
 		Random random = new Random();
-		int c1 = random.nextInt(Metaknowledge.getCategories().length);
-		String[] category1 = Metaknowledge.getCategories()[c1];
+		int randomCategory1 = random.nextInt(Metaknowledge.getData().size());
+		int randomCategory2 = random.nextInt(Metaknowledge.getData().size());
+		String cat1 = null;
+		String cat2 = null;
+		
+		int i = 0;
+		for (String category : Metaknowledge.getData().keySet()) {
+			if (randomCategory1 == i) {
+				cat1 = category;
+			}
+			
+			if (randomCategory2 == i) {
+				cat2 = category;
+			}
+			
+			i++;
+		}
+		
+		String[] category1 = Metaknowledge.getData().get(cat1);
 		
 		String word = category1[random.nextInt(category1.length)];
 		
-		String q1 = "[C] Is ";
-		String category = null;
-		
-		int c2 = random.nextInt(Metaknowledge.getCategories().length);
-		switch (c2) {
-		case 0:
-			category = "animal";
-			break;
-		case 1:
-			category = "plant";
-			break;
-		case 2:
-			category = "machine";
-			break;
-		case 3:
-			category = "film";
-			break;
-		case 4:
-			category = "furniture";
-			break;
-		}
+		String q1 = "Is ";
 		
 		question.setWord(word);
-		if (c2 == 0) {
-			question.setQuestion(q1+word+" an "+category+"?");
+		if (cat2.equals("animal")) {
+			question.setQuestion(q1+word+" an "+cat2+"?");
 		} else {
-			question.setQuestion(q1+word+" a "+category+"?");
+			question.setQuestion(q1+word+" a "+cat2+"?");
 		}
 		
 		question.setQuestionType("category");
-		question.setCategory(category);
-		if (c1 == c2) {
+		question.setCategory(cat2);
+		if (cat1.equals(cat2)) {
 			question.setAnswer("yes");
 		} else {
 			question.setAnswer("no");

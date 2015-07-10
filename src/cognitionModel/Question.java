@@ -6,6 +6,7 @@ public class Question {
 	private String word;
 	private String category;
 	private String answer;
+	
 	public String getQuestion() {
 		return question;
 	}

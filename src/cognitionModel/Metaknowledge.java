@@ -11,14 +11,22 @@ public class Metaknowledge {
 	private static String[] machine = {"Computer", "Washmashine", "Dishwasher", "Freezer", "Smartphone", "Mobilephone", "Electricfan", "Car", "Cardreader", "Train", "Plane", "Camera", "Vendingmashine", "Lift", "Truck", "Television", "Toaster", "Coffeemashine", "Microwaveoven", "Oven", "Moneyprinter", "Printer", "Snackmaschine", "ATM", "Automaticdoor", "Pacemaker", "Slotmaschine", "Skilift", "Blender", "Radio", "Soundsystem", "Speaker", "Microphone", "Foodprocessor", "Projector", "Icecrusher", "Gameconsole", "Bulldozer", "Ship", "Crane", "Excevator", "Steamshovel", "sewing maschine", "Boiler", "Robot", "Rocket", "Spaceship", "Windturbine", "Mower", "Fax"};
 	private static String[] film = {"The Holy Grail", "The Lord of the Ring", "Starwars", "Titanic", "Frozen", "Gone with the wind", "Casablance", "The Godfather", "Once upon a time in the West", "Jurassic Park", "Mad Max", "Priates of the Caribean", "Brave", "Highlander", "James Bond", "Murder on the Orient Express", "Indiana Jones", "Batman and Robin", "The Lion King", "The Hungergames", "Avengers", "Spiderman", "Antman", "Thor", "Matrix", "Life of Brian", "Aladdin", "Transformers", "Saw", "Texas Chainsaw Massacre", "Final Destination", "27 Dresses", "The Hobbit", "Tron", "Dracula", "Avatar", "King Kong", "Pixel", "Ben-Hur", "Conan the Barbar", "Narnia", "Harry Potter", "Eragon", "Finding Nemo", "Back to the Future", "Pulp Fiction", "Men in Black", "The green Mile", "Schindlers List", "Nightmare on Elmstreet"};
 	private static String[] furniture = {"Table", "Chair", "Carpet", "Bed", "Door", "Couch", "Shelf", "Board", "Lamp", "Coffetable", "Window", "Flowerpot", "Vase", "Candelier", "Tapestry", "Desk", "Draw", "Cabinet", "Mirror", "Wardobe", "Toilett", "Shower", "Bookcase", "Bookshelf", "Dressingtable", "Bench", "Bathtube", "Wingchair", "Barstool", "Bar", "Wokrbench", "Washstand", "Nightstand", "Diningtable", "Candlestand", "Sink", "Floor lamp", "Towlehanger", "Curtains", "Reglet", "Pictureframe", "Showcase", "Pillow", "Fireplace", "Drawingboard", "Chest", "Boxes", "Sofa", "Clubchair", "Bar table"};
-	private static String[][] category = {animal, plant, machine, film, furniture};
-			
-	public HashMap<String, String[]> getData() {
+	
+	
+	public static HashMap<String, String[]> getData() {
 		return data;
 	}
 	
 	public static void printlenght(){
 		System.out.println(animal.length + " " + plant.length + " " + machine.length + " " + film.length + " " + furniture.length);
+	}
+	
+	public static void initializeHash() {
+		data.put("animal", animal);
+		data.put("plant", plant);
+		data.put("machine", machine);
+		data.put("film", film);
+		data.put("furniture", furniture);
 	}
 	
 	public static String getRandomWord() {
@@ -39,9 +47,5 @@ public class Metaknowledge {
 		}
 		
 		return word;
-	}
-
-	public static String[][] getCategories() {
-		return category;
 	}
 }

@@ -6,6 +6,10 @@ public class Human {
 	private MidMemory midMem;
 	private int affectionMax;
 	
+	public Human() {
+		// 
+	}
+	
 	public boolean answer(Question question){
 		// Get Question
 		// Think about question (process memory)
