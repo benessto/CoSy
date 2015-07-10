@@ -37,10 +37,9 @@ public class LongMemory {
 
 		for (int i = 0; i < memory.length; i++) {
 			if (affection > 0) {
-				System.out.println(i);
 				if (affection > 150) {
-					int pers = random.nextInt(201);
-					pers = pers % 150;
+					int pers = random.nextInt(151);
+					pers = pers % 100;
 					memory[i].setPersonalMemory(pers);
 					affection -= pers;
 				} else {
@@ -49,14 +48,17 @@ public class LongMemory {
 				}
 				
 				if (affection > 150) {
-					int fam = random.nextInt(201);
-					fam = fam % 150;
+					System.out.println("index: " + i);
+					int fam = random.nextInt(151);
+					fam = fam % 100;
+					System.out.println("fam: " + fam);
 					memory[i].setFamilarity(fam);
 					affection -= fam;
 				} else {
 					memory[i].setFamilarity(affection);
 					affection = 0;
 				}
+				System.out.println(affection);
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 package cognitionModel;
 
 public class Human {
-	private final int AFFECTION_MAX = 2500;
+	private final int AFFECTION_MAX = 20000;
 	
 	private LongMemory longMem;
 	private ShortMemory shortMem;
@@ -20,7 +20,7 @@ public class Human {
 		// Think about question (process memory)
 		System.out.println(question.getQuestion());
 		MemoryConcept word = longMem.getMemoryConcept(question.getWord());
-		String answer = "yes";
+		String answer = question.getAnswer();
 		memorizeInShort(word);
 		associate(question, word);
 		processMid(word);
