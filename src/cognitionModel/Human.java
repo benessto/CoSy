@@ -26,22 +26,25 @@ public class Human {
 		return true;
 	}
 	
-	public int associate(Question question, MemoryConcept word){
+	public void associate(Question question, MemoryConcept word){
 		
 		int expertise = word.getExpertise();
 		int catassociate = 10;
 		int connectionassociate = word.getFamilarity()/5; 
 		
 		if (question.getQuestionType() == "upper" || question.getQuestionType() == "lower" ){
-			expertise = expertise + 10 * (connectionassociate/100)+1;
-			
+			expertise = expertise + 10;
+			word.setExpertise(expertise);
 		}	else {
-			expertise = expertise + 10 * ((connectionassociate+catassociate)/100)+1;
-			
+			if (question.getAnswer() == "yes"){
+				catassociate = catassociate + 30;
+				expertise = expertise + 10 * ((connectionassociate+catassociate)/100)+1;
+				word.setExpertise(expertise);
+			} else {
+				expertise = expertise + 10 * ((connectionassociate+catassociate)/100)+1;
+				word.setExpertise(expertise);
+				}
 		}
-		
-		
-		return expertise;
 	}
 	
 	public void putInShort(MemoryConcept memory) {
