@@ -12,13 +12,18 @@ public class Human {
 	
 	public boolean answer(Question question){
 		// Think about question (process memory)
-		// Give an answer
+		MemoryConcept word = longMem.getMemoryConcept(question.getWord();
+		String answer = "yes";
+		putInShort(word);
+		associate();
+		processMid();
+		printAnswer(answer);
 		
 		return true;
 	}
 	
-	public void processShort() {
-		
+	public void putInShort(MemoryConcept memory) {
+		shortMem.memorize(memory);
 	}
 	
 	public void processMid() {
@@ -27,5 +32,8 @@ public class Human {
 	
 	public void processLong() {
 		
+	}
+	public void printAnswer(){
+		System.out.println("");
 	}
 }
