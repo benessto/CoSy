@@ -9,6 +9,7 @@ public class Examiner {
 	private int correctAnswers = 0;
 	private int correctCat = 0;
 	private int correctCase = 0;
+	private int totalWordsInTest = 0;
 
  	private Question[] test = new Question[TEST_SIZE];
  	private ArrayList<String> memoryTest = new ArrayList<String>();
@@ -49,8 +50,14 @@ public class Examiner {
 	public void testMemory(){
 		for(String word : memoryTest){
 			evaluateAnswer(word, human.answerToMemoryTest(word));
+			for (int i = 0; i < test.length; i++) {
+				if (test[i].getWord().equalsIgnoreCase(word)) {
+					totalWordsInTest++;
+				}
+			}
 		}
-		System.out.println("Correct answers: " + correctAnswers + ".");
+		
+		System.out.println("Correct answers: " + correctAnswers + "/"+ totalWordsInTest +".");
 		System.out.println("Correct category answers: " + correctCat + ".");
 		System.out.println("Correct case answers: " + correctCase + ".");
 	}
@@ -71,9 +78,6 @@ public class Examiner {
 				}
 			}
 		}
-		//if(!answer){
-			//correctAnswers++;
-		//}
 	}
 	
 	public void askQuestions(){

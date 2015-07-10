@@ -21,11 +21,15 @@ public class Human {
 	public boolean answer(Question question){
 		// Think about question (process memory)
 		System.out.println(question.getQuestion());
-		MemoryConcept word = longMem.getMemoryConcept(question.getWord());
+		//Longterm Memory
+		MemoryConcept word = getMemoryConceptFromLong(question.getWord());
 		String answer = question.getAnswer();
+		//Shortterm Memory
 		memorizeInShort(word);
 		associate(question, word);
+		//Midterm Memory
 		processMid(word);
+		//Give answer
 		printAnswer(answer);
 		
 		return true;
@@ -52,7 +56,7 @@ public class Human {
 		
 		if (question.getQuestionType() == "upper" || question.getQuestionType() == "lower" ){
 			expbonus = expbonus + 10;
-			System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
+			//System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
 			word.setExpertise(expertise+(int)expbonus);
 			
 		}	else {
@@ -61,14 +65,14 @@ public class Human {
 				double test = ((((connectionassociate/2)+catassociate)/100)+1);
 				System.out.println("|| Familarity: " + connectionassociate + " || Categoryassociation: " + catassociate + " || Multiplicator: " + test + " ||");
 				expbonus = expbonus + (30 * ((((connectionassociate/2)+catassociate)/100)+1));
-				System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
+				//System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
 				word.setExpertise(expertise+(int)expbonus);
 				
 			} else {
 				double test = ((((connectionassociate/2)+catassociate)/100)+1);
 				System.out.println("|| Familarity: " + connectionassociate + " || Categoryassociation: " + catassociate + " || Multiplicator: " + test + " ||");
 				expbonus = expbonus + (30 * ((((connectionassociate/2)+catassociate)/100)+1));
-				System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
+				//System.out.println("The temporary Expertise towards the word: " + word.getWord() + " increased by " + (int)expbonus + "." );
 				word.setExpertise(expertise+(int)expbonus);
 				}
 		}
@@ -86,9 +90,10 @@ public class Human {
 		}
 	}
 	
-	public void processLong() {
-		
+	public MemoryConcept getMemoryConceptFromLong(String word) {
+		return longMem.getMemoryConcept(word);
 	}
+	
 	public void printAnswer(String answer){
 		System.out.println("My Answer is: " + answer + "\n");
 		

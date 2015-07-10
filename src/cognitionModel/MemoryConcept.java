@@ -13,6 +13,10 @@ public class MemoryConcept {
 		setFamilarity(f);
 		setPersonalMemory(p);
 	}
+	
+	public void increaseExpertise(int i) {
+		expertise += i;
+	}
 
 	/**
 	 * @return the word

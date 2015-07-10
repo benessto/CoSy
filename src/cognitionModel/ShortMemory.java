@@ -6,6 +6,14 @@ public class ShortMemory {
 	
 	
 	public void memorize(MemoryConcept memory){
+		for (int i = 0; i < buffer.length; i++) {
+			if (buffer[i] != null && memory.getWord().equalsIgnoreCase(buffer[i].getWord())) {
+				buffer[i].increaseExpertise(20);
+				System.out.println("Hey I just answered about this word.. (increase expertise by 20)");
+				return;
+			}
+		}
+		
 		if(index>=7){
 			index = 0;
 		}
