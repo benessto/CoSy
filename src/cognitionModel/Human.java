@@ -26,6 +26,24 @@ public class Human {
 		return true;
 	}
 	
+	public int associate(Question question, MemoryConcept word){
+		
+		int expertise = word.getExpertise();
+		int catassociate = 10;
+		int connectionassociate = word.getFamilarity()/5; 
+		
+		if (question.getQuestionType() == "upper" || question.getQuestionType() == "lower" ){
+			expertise = expertise + 10 * (connectionassociate/100)+1;
+			
+		}	else {
+			expertise = expertise + 10 * ((connectionassociate+catassociate)/100)+1;
+			
+		}
+		
+		
+		return expertise;
+	}
+	
 	public void putInShort(MemoryConcept memory) {
 		shortMem.memorize(memory);
 	}
