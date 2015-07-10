@@ -7,7 +7,7 @@ public class Human {
 	private int affectionMax;
 	
 	public Human() {
-		// 
+		
 	}
 	
 	public boolean answer(Question question){
