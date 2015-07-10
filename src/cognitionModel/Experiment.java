@@ -9,6 +9,7 @@ public class Experiment {
 		createExaminer();
 		examiner.prepareQuestions();
 		examiner.askQuestions();
+		examiner.testMemory();
 	}
 	
 	public Human createHuman() {

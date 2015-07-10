@@ -18,12 +18,22 @@ public class Human {
 		// Think about question (process memory)
 		MemoryConcept word = longMem.getMemoryConcept(question.getWord());
 		String answer = "yes";
-		putInShort(word);
+		memorizeInShort(word);
 		associate(question, word);
-		processMid();
+		processMid(word);
 		printAnswer(answer);
 		
 		return true;
+	}
+	
+	public boolean answerToMemoryTest(String word){
+		if(shortMem.contains(word)){
+			return true;
+		}
+		if(midMem.contains(word)){
+			return true;
+		}
+		return false;
 	}
 	
 	public int associate(Question question, MemoryConcept word){
@@ -44,7 +54,7 @@ public class Human {
 		return expertise;
 	}
 	
-	public void putInShort(MemoryConcept memory) {
+	public void memorizeInShort(MemoryConcept memory) {
 		shortMem.memorize(memory);
 	}
 	

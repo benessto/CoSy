@@ -17,4 +17,13 @@ public class ShortMemory {
 		return buffer;
 	}
 	
+	public Boolean contains(String word){
+		for(int i = 0; i<buffer.length; i++){
+			if(buffer[i].equals(word)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

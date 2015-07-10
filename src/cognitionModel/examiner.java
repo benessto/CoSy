@@ -1,12 +1,15 @@
 package cognitionModel;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Examiner {
 	private final int TEST_SIZE = 100;
 	private Human human;
+	private int correctAnswers = 0;
 
  	private Question[] test = new Question[TEST_SIZE];
+ 	private ArrayList<String> memoryTest = new ArrayList<String>();
  	
  	public Examiner(Human human){
  		this.human = human;
@@ -25,6 +28,37 @@ public class Examiner {
 			case 2:
 				test[i] = askForCategory();
 			}
+		}
+		for(int j =0; j<150; j++){
+			String word = Metaknowledge.getRandomWord();
+			while(memoryTest.contains(word)){
+				word = Metaknowledge.getRandomWord();
+			}
+			memoryTest.add(word);
+			
+		}
+		
+	}
+	
+	public void testMemory(){
+		for(String word : memoryTest){
+			evaluateAnswer(word, human.answerToMemoryTest(word));
+		}
+	}
+	
+	private void evaluateAnswer(String word, Boolean answer){
+		for(int i = 0; i < test.length; i++){
+			if(test[i].getWord().equals(word)){
+				if(answer){
+					correctAnswers++;
+					break;
+				} else {
+					break;
+				}
+			}
+		}
+		if(!answer){
+			correctAnswers++;
 		}
 	}
 	

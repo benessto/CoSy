@@ -13,4 +13,13 @@ public class MidMemory {
 	public ArrayList<MemoryConcept> getMemory(){
 		return memory;
 	}
+	
+	public Boolean contains(String word){
+		for(MemoryConcept memc : memory){
+			if(memc.getWord().equals(word)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
