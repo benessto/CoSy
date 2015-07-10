@@ -11,7 +11,6 @@ public class Human {
 	}
 	
 	public boolean answer(Question question){
-		// Get Question
 		// Think about question (process memory)
 		// Give an answer
 		
